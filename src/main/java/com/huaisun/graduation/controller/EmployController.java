@@ -1,7 +1,5 @@
 package com.huaisun.graduation.controller;
 
-import com.huaisun.graduation.auto.dao.TEmploy;
-import com.huaisun.graduation.constants.HtmlConstants;
 import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.form.EmployForm;
 import com.huaisun.graduation.service.EmployService;
@@ -30,8 +28,8 @@ public class EmployController {
     @Resource
     private EmployService service;
 
-    @PostMapping(HtmlConstants.LOGIN_IN)
     @ApiOperation(value = "员工管理[员工登陆]")
+    @PostMapping("/login")
     public Result login(EmployForm form, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Result result = service.searchEmploy(form);
@@ -40,14 +38,14 @@ public class EmployController {
         return result;
     }
 
-    @PostMapping(HtmlConstants.SAVE_UPDATE)
     @ApiOperation(value = "员工管理[员工注册]")
+    @PostMapping("/save_update")
     public Result sign(EmployForm form) {
         return service.saveOrUpdate(form);
     }
 
-    @GetMapping(HtmlConstants.CHECK_LOGIN)
     @ApiOperation(value = "员工[检查员工是否登陆]")
+    @GetMapping("/check_login")
     public Result checkLogin(HttpServletRequest request) {
 
         Result result = new Result();

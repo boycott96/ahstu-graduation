@@ -1,6 +1,5 @@
 package com.huaisun.graduation.controller;
 
-import com.huaisun.graduation.constants.HtmlConstants;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
@@ -15,21 +14,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping(HtmlConstants.INDEX)
+    @GetMapping("/index")
     @ApiOperation(value = "页面[登陆注册页]")
     public String index() {
-        return HtmlConstants.INDEX;
+        return "index";
     }
 
-    @GetMapping(HtmlConstants.HOME)
+    @GetMapping("/home")
     @ApiOperation(value = "页面[导航页]")
     public String home() {
-        return HtmlConstants.HOME;
+        return "home";
     }
 
-    @GetMapping(HtmlConstants.SHOW)
+    @GetMapping("/show")
     @ApiOperation(value = "页面[主页]")
     public String show() {
-        return HtmlConstants.SHOW;
+        return "show";
     }
 }
