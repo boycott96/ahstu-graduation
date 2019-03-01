@@ -1,0 +1,7 @@
+.iframe-layout {
+    background: #e3f2fd;
+    padding: 2.75rem 2.25rem;
+    width: 100%;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}

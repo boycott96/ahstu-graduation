@@ -20,7 +20,16 @@ public interface UserService {
 
     /**
      * 计算用户增长率(星期)
+     *
      * @return Result
      */
     Result getUserIncrease();
+
+    /**
+     * 新增用户
+     *
+     * @param form form表单
+     * @return Result
+     */
+    Result addUser(UserForm form);
 }

@@ -33,6 +33,6 @@ public class UserForm {
     @ApiModelProperty(value = "消费总额", dataType = "Float")
     private Float cost;
 
-    @ApiModelProperty(value = "是否有日期限制", dataType = "String")
-    private String valid;
+    @ApiModelProperty(value = "是否有日期限制", dataType = "String", allowableValues = "1,0")
+    private String isDate;
 }

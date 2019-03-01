@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "logging.com.huaisun.graduation.auto.mapper",
+      "type": "java.lang.String",
+      "description": "Description for logging.com.huaisun.graduation.auto.mapper."
+  }
+] }

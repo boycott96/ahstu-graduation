@@ -5,6 +5,7 @@ import com.huaisun.graduation.service.UserService;
 import com.huaisun.graduation.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,14 +26,20 @@ public class UserController {
     private UserService service;
 
     @ApiOperation(value = "用户[查询用户]")
-    @PostMapping("/searchUser")
+    @GetMapping("/searchUser")
     public Result searchUser(UserForm form) {
         return service.searchUser(form);
     }
 
     @ApiOperation(value = "用户[计算星期用户的增长率]")
-    @PostMapping("/getUserIncrease")
+    @GetMapping("/getUserIncrease")
     public Result getUserIncrease() {
         return service.getUserIncrease();
+    }
+
+    @ApiOperation(value = "用户[新增用户]")
+    @PostMapping("/addUser")
+    public Result addUser(UserForm form){
+        return service.addUser(form);
     }
 }

@@ -52,7 +52,10 @@ public enum ResultCode {
     /* 注册错误：80001-89999 */
     SIGN_SAME_NAME(80001, "姓名重复"),
     SIGN_SAME_EMAIL(80001, "邮箱已注册"),
-    SIGN_SAME_PHONE(80001, "手机号已注册");
+    SIGN_SAME_PHONE(80001, "手机号已注册"),
+
+    /* 注册错误：90001-99999 */
+    ORDER_NOT_EXIST(90001, "订单不存在");
 
     private Integer code;
 

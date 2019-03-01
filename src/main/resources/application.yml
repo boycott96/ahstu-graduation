@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  ################# view #################
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+  ################ datasource ############
+  datasource:
+    url: jdbc:mysql://149.28.45.240:3306/db_wei_xiao
+    username: test
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+      max-active: 20
+      max-idle: 8
+      min-idle: 8
+      initial-size: 10
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.huaisun.graduation.auto.mapper: DEBUG
+

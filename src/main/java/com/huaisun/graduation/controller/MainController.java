@@ -14,21 +14,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping("/index")
     @ApiOperation(value = "页面[登陆注册页]")
+    @GetMapping("/index")
     public String index() {
         return "index";
     }
 
-    @GetMapping("/home")
     @ApiOperation(value = "页面[导航页]")
+    @GetMapping("/home")
     public String home() {
         return "home";
     }
 
-    @GetMapping("/show")
     @ApiOperation(value = "页面[主页]")
+    @GetMapping("/show")
     public String show() {
         return "show";
+    }
+
+    @ApiOperation(value = "页面[用户管理]")
+    @GetMapping("/user")
+    public String user() {
+        return "user";
     }
 }

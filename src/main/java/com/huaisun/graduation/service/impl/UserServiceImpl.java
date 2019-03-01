@@ -3,7 +3,7 @@ package com.huaisun.graduation.service.impl;
 import com.huaisun.graduation.auto.dao.TUser;
 import com.huaisun.graduation.auto.dao.TUserExample;
 import com.huaisun.graduation.auto.mapper.TUserMapper;
-import com.huaisun.graduation.constants.ResultCode;
+import com.huaisun.graduation.constants.VarConstants;
 import com.huaisun.graduation.form.UserForm;
 import com.huaisun.graduation.service.UserService;
 import com.huaisun.graduation.util.Result;
@@ -30,36 +30,34 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result searchUser(UserForm form) {
 
-        Result result = new Result();
-
         TUserExample example = new TUserExample();
         TUserExample.Criteria criteria = example.createCriteria();
 
-        if (Tools.isNotEmpty(form.getPhone())) {
-            criteria.andPhoneLike(form.getPhone());
-        }
-
         if (Tools.isNotEmpty(form.getName())) {
-            criteria.andNameLike(form.getName());
+            TUserExample.Criteria criteria1 = example.createCriteria();
+            criteria1.andNameLike("%" + form.getName() + "%");
+            example.or(criteria1);
         }
 
         if (Tools.isNotEmpty(form.getEmail())) {
-            criteria.andEmailLike(form.getEmail());
+            TUserExample.Criteria criteria2 = example.createCriteria();
+            criteria2.andEmailLike("%" +form.getEmail()+ "%");
+            example.or(criteria2);
         }
 
-        if (Tools.isNotEmpty(form.getValid())) {
+        if (Tools.isNotEmpty(form.getPhone())) {
+            TUserExample.Criteria criteria3 = example.createCriteria();
+            criteria3.andPhoneLike("%" +form.getPhone()+ "%");
+            example.or(criteria3);
+        }
+
+        if (form.getIsDate().equals(VarConstants.START)) {
             criteria.andCreateDateBetween(TimeUtil.getNowWeekStart(), new Date());
         }
 
         List<TUser> userList = userMapper.selectByExample(example);
 
-
-        if (userList.size() < 1) {
-            result.setResultCode(ResultCode.USER_NOT_EXIST);
-            return result;
-        }
-        result = Result.success(userList);
-        return result;
+        return Result.success(userList);
     }
 
     @Override
@@ -79,6 +77,11 @@ public class UserServiceImpl implements UserService {
 
         Long userCountOne = userMapper.countByExample(example1);
 
-        return Result.success(100*(userCountOne - userCountLast) / (userCountLast == 0 ? 1 : userCountLast));
+        return Result.success(100.0 * (userCountOne - userCountLast) / (userCountLast == 0 ? 1 : userCountLast));
+    }
+
+    @Override
+    public Result addUser(UserForm form) {
+        return null;
     }
 }

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ahstu-graduation:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ahstu-graduation</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ahstu-graduation-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ahstu-graduation:war exploded" />
+    </root>
+  </artifact>
+</component>
