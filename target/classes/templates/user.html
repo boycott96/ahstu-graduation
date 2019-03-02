@@ -27,6 +27,7 @@
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" name="name" id="inputName"
                                                placeholder="姓名">
+                                        <small id="nameHelp" class="form-text"></small>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +35,9 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label" for="inputEmail">邮箱</label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" name="email" id="inputEmail" placeholder="邮箱">
+                                        <input type="email" class="form-control" name="email" id="inputEmail"
+                                               placeholder="邮箱">
+                                        <small id="emailHelp" class="form-text"></small>
                                     </div>
                                 </div>
                             </div>
@@ -42,17 +45,20 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="inputPhone">手机号码</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="phone" id="inputPhone" placeholder="手机号码">
+                                        <input type="text" class="form-control" name="phone" id="inputPhone"
+                                               placeholder="手机号码">
+                                        <small id="phoneHelp" class="form-text"></small>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-inverse-warning mr-2">保存</button>
+                                        <button type="button" id="saveUser" class="btn btn-inverse-warning mr-2">保存
+                                        </button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button class="btn btn-light">清空</button>
+                                        <button type="reset" id="clearForm" class="btn btn-light">清空</button>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +88,8 @@
                             <div class="col-md-2">
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <button type="button" class="btn btn-inverse-info mr-2" id="button-search">查询</button>
+                                        <button type="button" class="btn btn-inverse-info mr-2" id="button-search">查询
+                                        </button>
                                     </div>
                                 </div>
                             </div>

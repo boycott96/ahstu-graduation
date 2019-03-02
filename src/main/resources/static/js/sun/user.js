@@ -1,6 +1,7 @@
 $(function () {
     user.loadUser('');
     user.searchUser();
+    user.addUser();
 });
 
 var user = {};
@@ -32,4 +33,53 @@ user.searchUser = function () {
         var name = $("#queryName").val();
         user.loadUser(name);
     })
+};
+
+user.addUser = function () {
+
+    $("#inputName").change(function () {
+        user.checkName()
+    });
+
+    $("#inputPhone").change(function () {
+        user.checkPhone();
+    });
+
+    $("#saveUser").click(function () {
+        if (user.checkName() && user.checkPhone()) {
+            $.ajax({
+                url: '/sun/user/addUser',
+                type: 'POST',
+                data: $("#addForm").serialize(),
+                success: function (result) {
+                    if(result.code === 1){
+                        $("#clearForm").trigger("click");
+                        user.loadUser();
+                    }
+                }
+            })
+        }
+    });
+};
+
+user.checkName = function () {
+    var name = $("#inputName").val();
+    if (name === "" || name.trim() === "") {
+        $("#nameHelp").html("").append("姓名不能为空").addClass("text-danger");
+        return false;
+    } else {
+        $("#nameHelp").html("");
+        return true;
+    }
+};
+
+user.checkPhone = function () {
+    var phone = $("#inputPhone").val();
+    if (phone === "" || phone.trim() === "") {
+        $("#phoneHelp").html("").append("密码不能为空").addClass("text-danger");
+        return false;
+    } else {
+        $("#phoneHelp").html("");
+        return true;
+    }
 };

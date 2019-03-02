@@ -3,6 +3,7 @@ package com.huaisun.graduation.service.impl;
 import com.huaisun.graduation.auto.dao.TUser;
 import com.huaisun.graduation.auto.dao.TUserExample;
 import com.huaisun.graduation.auto.mapper.TUserMapper;
+import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.constants.VarConstants;
 import com.huaisun.graduation.form.UserForm;
 import com.huaisun.graduation.service.UserService;
@@ -41,13 +42,13 @@ public class UserServiceImpl implements UserService {
 
         if (Tools.isNotEmpty(form.getEmail())) {
             TUserExample.Criteria criteria2 = example.createCriteria();
-            criteria2.andEmailLike("%" +form.getEmail()+ "%");
+            criteria2.andEmailLike("%" + form.getEmail() + "%");
             example.or(criteria2);
         }
 
         if (Tools.isNotEmpty(form.getPhone())) {
             TUserExample.Criteria criteria3 = example.createCriteria();
-            criteria3.andPhoneLike("%" +form.getPhone()+ "%");
+            criteria3.andPhoneLike("%" + form.getPhone() + "%");
             example.or(criteria3);
         }
 
@@ -81,7 +82,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result addUser(UserForm form) {
-        return null;
+        Result result = new Result();
+        if (Tools.isEmpty(form) || Tools.isEmpty(form.getName()) || Tools.isEmpty(form.getPhone())) {
+            result.setResultCode(ResultCode.USER_SAVE_ERROR);
+            return result;
+        }
+
+        TUser user = new TUser();
+        user.setName(form.getName());
+        user.setEmail(form.getEmail());
+        user.setPhone(form.getPhone());
+        user.setCreateDate(new Date());
+        user.setIntegral(0);
+        user.setBalance(0f);
+        user.setCost(0f);
+
+        int num = userMapper.insert(user);
+        if (num < 1) {
+            result.setResultCode(ResultCode.USER_SAVE_ERROR);
+        } else {
+            result.setResultCode(ResultCode.SUCCESS);
+        }
+        return result;
     }
 }

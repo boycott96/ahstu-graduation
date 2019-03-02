@@ -9,7 +9,7 @@ $(function () {
 
 var show = {};
 
-var increase_compare_last = "上期相比幅度 ";
+var increase_compare_last = "上期相比幅度";
 
 show.searchUserOfWeek = function () {
     $.ajax({
