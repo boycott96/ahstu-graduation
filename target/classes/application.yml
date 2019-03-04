@@ -11,9 +11,9 @@ spring:
       suffix: .html
   ################ datasource ############
   datasource:
-    url: jdbc:mysql://149.28.45.240:3306/db_wei_xiao
-    username: test
-    password: 123456
+    url: jdbc:mysql://localhost:3306/db_wei_xiao
+    username: root
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
     tomcat:
       max-active: 20

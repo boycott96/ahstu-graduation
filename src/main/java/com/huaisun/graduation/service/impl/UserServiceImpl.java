@@ -2,6 +2,7 @@ package com.huaisun.graduation.service.impl;
 
 import com.huaisun.graduation.auto.dao.TUser;
 import com.huaisun.graduation.auto.dao.TUserExample;
+import com.huaisun.graduation.auto.dao.TUserKey;
 import com.huaisun.graduation.auto.mapper.TUserMapper;
 import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.constants.VarConstants;
@@ -83,28 +84,91 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result addUser(UserForm form) {
+    public Result saveOrUpdateUser(UserForm form) {
         Result result = new Result();
-        if (Tools.isEmpty(form) || Tools.isEmpty(form.getName()) || Tools.isEmpty(form.getPhone())) {
-            result.setResultCode(ResultCode.USER_SAVE_ERROR);
+        if (Tools.isEmpty(form)) {
+            result.setResultCode(ResultCode.PARAM_IS_BLANK);
             return result;
         }
-
         TUser user = new TUser();
-        user.setName(form.getName());
-        user.setEmail(form.getEmail());
-        user.setPhone(form.getPhone());
-        user.setCreateDate(new Date());
-        user.setIntegral(0);
-        user.setBalance(0f);
-        user.setCost(0f);
 
-        int num = userMapper.insert(user);
-        if (num < 1) {
-            result.setResultCode(ResultCode.USER_SAVE_ERROR);
+        if (Tools.isEmpty(form.getId())) {
+
+            user.setName(form.getName());
+            user.setEmail(form.getEmail());
+            user.setPhone(form.getPhone());
+            user.setCreateDate(new Date());
+            user.setIntegral(0);
+            user.setBalance(0f);
+            user.setCost(0f);
+
+            int num = userMapper.insert(user);
+            if (num < 1) {
+                result.setResultCode(ResultCode.USER_SAVE_ERROR);
+            } else {
+                result.setResultCode(ResultCode.SUCCESS);
+            }
         } else {
-            result.setResultCode(ResultCode.SUCCESS);
+            user.setId(form.getId());
+            TUser user1 = userMapper.selectByPrimaryKey(user);
+
+            if (Tools.isEmpty(user1)) {
+                result.setResultCode(ResultCode.PARAM_IS_INVALID);
+            } else {
+                if (Tools.isNotEmpty(form.getName())) {
+                    user1.setName(form.getName());
+                }
+
+                if (Tools.isNotEmpty(form.getEmail())) {
+                    user1.setEmail(form.getEmail());
+                }
+
+                if (Tools.isNotEmpty(form.getPhone())) {
+                    user1.setPhone(form.getPhone());
+                }
+
+                int num = userMapper.updateByPrimaryKey(user1);
+
+                if (num == 1) {
+                    result.setResultCode(ResultCode.SUCCESS);
+                } else {
+                    result.setResultCode(ResultCode.USER_UPDATE_ERROR);
+                }
+            }
         }
         return result;
+    }
+
+    @Override
+    public Result getUser(UserForm form) {
+        if (Tools.isEmpty(form) || Tools.isEmpty(form.getId())) {
+            return Result.failure(ResultCode.PARAM_IS_BLANK);
+        }
+
+        TUserKey userKey = new TUserKey();
+        userKey.setId(form.getId());
+
+        TUser user = userMapper.selectByPrimaryKey(userKey);
+        if (Tools.isEmpty(user)) {
+            return Result.failure(ResultCode.USER_NOT_EXIST);
+        }
+        return Result.success(user);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Result deleteUser(UserForm form) {
+        if (Tools.isEmpty(form) || Tools.isEmpty(form.getId())) {
+            return Result.failure(ResultCode.PARAM_IS_BLANK);
+        }
+
+        TUserKey userKey = new TUserKey();
+        userKey.setId(form.getId());
+
+        int num = userMapper.deleteByPrimaryKey(userKey);
+        if (num == 1) {
+            return Result.success();
+        }
+        return Result.failure(ResultCode.USER_NOT_EXIST);
     }
 }

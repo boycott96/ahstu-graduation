@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../static/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/sun/user.css">
     <script src="../static/js/jquery-3.3.1.js"></script>
     <script src="../static/js/sun/user.js"></script>
 </head>
@@ -15,7 +16,7 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">添加用户</h4>
+                    <h4 class="card-title">添加/更新 用户</h4>
                     <p class="card-description">
                         用户信息
                     </p>
@@ -95,7 +96,7 @@
                             </div>
                         </div>
                     </form>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="table" data-toggle="table">
                         <thead>
                         <tr>
                             <th>序号</th>
@@ -106,11 +107,29 @@
                             <th>余额</th>
                             <th>消费</th>
                             <th>注册日期</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody id="user-table-data">
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation example" class="my-pagination">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

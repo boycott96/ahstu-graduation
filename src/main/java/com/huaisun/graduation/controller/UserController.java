@@ -5,10 +5,7 @@ import com.huaisun.graduation.service.UserService;
 import com.huaisun.graduation.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -38,8 +35,20 @@ public class UserController {
     }
 
     @ApiOperation(value = "用户[新增用户]")
-    @PostMapping("/addUser")
-    public Result addUser(UserForm form){
-        return service.addUser(form);
+    @PostMapping("/saveOrUpdateUser")
+    public Result saveOrUpdateUser(UserForm form) {
+        return service.saveOrUpdateUser(form);
+    }
+
+    @ApiOperation(value = "用户[根据id获取用户信息]")
+    @GetMapping("/getUser")
+    public Result getUser(UserForm form) {
+        return service.getUser(form);
+    }
+
+    @ApiOperation(value = "用户[删除用户]")
+    @DeleteMapping("/deleteUser")
+    public Result deleteUser(UserForm form) {
+        return service.deleteUser(form);
     }
 }

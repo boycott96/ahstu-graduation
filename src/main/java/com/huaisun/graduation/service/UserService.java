@@ -26,10 +26,26 @@ public interface UserService {
     Result getUserIncrease();
 
     /**
-     * 新增用户
+     * 新增或更新用户
      *
      * @param form form表单
      * @return Result
      */
-    Result addUser(UserForm form);
+    Result saveOrUpdateUser(UserForm form);
+
+    /**
+     * 根据id 获取用户信息
+     *
+     * @param form 表单
+     * @return Result
+     */
+    Result getUser(UserForm form);
+
+    /**
+     * 根据id 删除用户
+     *
+     * @param form 表单
+     * @return Result
+     */
+    Result deleteUser(UserForm form);
 }
