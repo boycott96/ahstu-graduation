@@ -37,4 +37,10 @@ public class MainController {
     public String user() {
         return "user";
     }
+
+    @ApiOperation(value = "页面[订单管理]")
+    @GetMapping("/order")
+    public String order(){
+        return "order";
+    }
 }
