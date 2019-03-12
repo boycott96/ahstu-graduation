@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication(scanBasePackages = "com.huaisun.*")
 @EnableSwagger2
-@MapperScan({"com.huaisun.graduation.auto.mapper"})
+@MapperScan({"com.huaisun.graduation.mapper","com.huaisun.graduation.auto.mapper"})
 public class AhstuGraduationApplication {
 
     public static void main(String[] args) {

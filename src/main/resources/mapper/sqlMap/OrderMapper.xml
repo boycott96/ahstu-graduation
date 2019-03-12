@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huaisun.graduation.mapper.OrderMapper">
+    <select id="searchOrderAndUser" parameterType="com.huaisun.graduation.form.OrderForm"
+            resultType="com.huaisun.graduation.entity.OrderEntity">
+        SELECT
+        O.ID AS id,
+        U.NAME AS name,
+        O.CREATE_DATE AS createDate,
+        O.MODE AS mode,
+        O.PRICE AS price,
+        O.COUNT AS count,
+        O.COST AS cost,
+        O.PAYMENT AS payment
+        FROM T_ORDER O
+        JOIN T_USER U ON O.U_ID = U.ID
+        <where>
+            O.VALID = 1
+            <if test="name != null">
+                and U.NAME like #{name}
+            </if>
+            <if test="id != null">
+                and O.ID like #{id}
+            </if>
+            <if test="mode != null">
+                and O.MODE = #{mode}
+            </if>
+        </where>
+        ORDER BY O.CREATE_DATE
+    </select>
+</mapper>

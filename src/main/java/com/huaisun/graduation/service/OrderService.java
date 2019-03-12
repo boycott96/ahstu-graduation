@@ -23,4 +23,12 @@ public interface OrderService {
      * @return Result
      */
     Result getOrderIncrease();
+
+    /**
+     * 关联查询订单用户表，
+     *
+     * @param form 搜索条件
+     * @return Result
+     */
+    Result searchOrderAndUser(OrderForm form);
 }

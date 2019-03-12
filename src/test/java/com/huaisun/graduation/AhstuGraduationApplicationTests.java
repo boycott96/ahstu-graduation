@@ -1,5 +1,6 @@
 package com.huaisun.graduation;
 
+import com.huaisun.graduation.util.OrderNumberUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,7 @@ public class AhstuGraduationApplicationTests {
 
     @Test
     public void contextLoads() {
+        System.out.println(OrderNumberUtil.getOrderNumber("admin"));
     }
 
 }

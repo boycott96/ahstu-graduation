@@ -21,11 +21,12 @@ spring:
       min-idle: 8
       initial-size: 10
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
 logging:
   level:
     com.huaisun.graduation.auto.mapper: DEBUG
+    com.huaisun.graduation.mapper: DEBUG
 

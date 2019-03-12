@@ -12,15 +12,15 @@ import lombok.Data;
 @Data
 public class OrderForm {
 
-    @ApiModelProperty(value = "用户Id", dataType = "Integer")
-    private Integer uId;
+    @ApiModelProperty(value = "用户姓名", dataType = "String")
+    private String name;
+
+    @ApiModelProperty(value = "订单id", dataType = "String")
+    private String id;
 
     @ApiModelProperty(value = "是否有日期限制", dataType = "String", allowableValues = "1,0")
     private String isDate;
 
     @ApiModelProperty(value = "订单方式", dataType = "String")
     private String mode;
-
-    @ApiModelProperty(value = "订单是否有效", dataType = "String")
-    private String valid;
 }

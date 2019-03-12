@@ -34,4 +34,10 @@ public class OrderController {
     public Result getOrderIncrease() {
         return service.getOrderIncrease();
     }
+
+    @ApiOperation(value = "订单[关联查询订单]")
+    @GetMapping("/searchOrderAndUser")
+    public Result searchOrderAndUser(OrderForm form) {
+        return service.searchOrderAndUser(form);
+    }
 }
