@@ -2,13 +2,13 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="huaisun" uuid="a9d77113-aa92-4069-8b17-20c900a95df2">
-      <database-info product="MySQL" version="5.1.73" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.8 ( Revision: ${svn.Revision} )" dbms="MYSQL" exact-version="5.1.73" exact-driver-version="5.1">
+      <database-info product="MySQL" version="5.5.48" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.8 ( Revision: ${svn.Revision} )" dbms="MYSQL" exact-version="5.5.48" exact-driver-version="5.1">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
-      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
-      <user-name>test</user-name>
+      <user-name>root</user-name>
       <introspection-schemas>*:*</introspection-schemas>
     </data-source>
   </component>
