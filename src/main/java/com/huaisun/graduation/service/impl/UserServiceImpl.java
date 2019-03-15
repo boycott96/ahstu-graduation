@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -98,9 +99,9 @@ public class UserServiceImpl implements UserService {
             user.setEmail(form.getEmail());
             user.setPhone(form.getPhone());
             user.setCreateDate(new Date());
-            user.setIntegral(0);
-            user.setBalance(0f);
-            user.setCost(0f);
+            user.setIntegral(new BigDecimal(0));
+            user.setBalance(new BigDecimal(0));
+            user.setCost(new BigDecimal(0));
 
             int num = userMapper.insert(user);
             if (num < 1) {

@@ -9,6 +9,6 @@ public class VarConstants {
     /**
      * 启用，停用
      */
-    public static final String START = "1";
-    public static final String STOP = "0";
+    public static final Integer START = 1;
+    public static final Integer STOP = 0;
 }
