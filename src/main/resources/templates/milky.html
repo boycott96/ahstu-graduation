@@ -11,7 +11,9 @@
     <script src="../static/vendors/js/vendor.bundle.addons.js"></script>
     <script src="../static/js/off-canvas.js"></script>
     <script src="../static/js/misc.js"></script>
+    <script src="../static/js/file-upload.js"></script>
     <script src="../static/js/dashboard.js"></script>
+    <script src="../static/js/sun/milk.js"></script>
 </head>
 <body>
 <div class="content-wrapper">
@@ -24,20 +26,71 @@
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>奶茶菜单
+                    <button type="button" class="btn btn-link btn-sm text-black" data-toggle="modal"
+                            data-target="#exampleModal">添加奶茶
+                    </button>
+                    <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <button type="button" class="btn btn-link btn-sm text-black">编辑奶茶</button>
                     <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                 </li>
             </ul>
         </nav>
     </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="card" style="width: 14rem;">
-                <img src="../static/images/milk/kafei10001.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">经典咖啡</h5>
-                    <p>规格</p>
-                    <a href="#" class="btn btn-primary">下单</a>
+    <!--奶茶菜单-->
+    <div class="card-deck">
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background: #fff">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">添加奶茶菜单</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample">
+                        <div class="form-group row">
+                            <label for="inputMilkName" class="col-sm-3 col-form-label">奶茶名</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputMilkName" placeholder="奶茶名">
+                            </div>
+                        </div>
+                        <div class="form-group row" style="max-height: 44px;">
+                            <label for="inputMilkPrice" class="col-sm-3 col-form-label">奶茶价格</label>
+                            <div class="col-sm-9 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputMilkPrice" placeholder="奶茶价格">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">图片地址</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="img[]" class="file-upload-default">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" disabled
+                                           placeholder="上传图片">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-gradient-info"
+                                                type="button">选择</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-success">保存</button>
                 </div>
             </div>
         </div>
