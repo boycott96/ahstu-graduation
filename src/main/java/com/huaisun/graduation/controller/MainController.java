@@ -40,7 +40,13 @@ public class MainController {
 
     @ApiOperation(value = "页面[订单管理]")
     @GetMapping("/order")
-    public String order(){
+    public String order() {
         return "order";
+    }
+
+    @ApiOperation(value = "页面[奶茶菜单]")
+    @GetMapping("/milky")
+    public String milkly() {
+        return "milky";
     }
 }

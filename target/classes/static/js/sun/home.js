@@ -12,7 +12,7 @@ employ.checkLogin = function () {
             if (result.code === 1) {
                 $(".top-name-label").html(result.data.name);
                 if (result.data.head != null)
-                    $(".head-icon").attr("src", "../static/images/icon/" + result.data.head);
+                    $(".head-icon").attr("src", result.data.head);
             } else {
                 window.location.href = "/index";
             }
