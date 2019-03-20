@@ -11,10 +11,10 @@ spring:
       suffix: .html
   ################ datasource ############
   datasource:
-    url: jdbc:mysql://localhost:3306/db_wei_xiao?serverTimezone=UTC
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.100.227.176:3306/db_wei_xiao?serverTimezone=UTC
+    username: huaisun
+    password: huaisun
+    driver-class-name: com.mysql.jdbc.Driver
     tomcat:
       max-active: 20
       max-idle: 8
