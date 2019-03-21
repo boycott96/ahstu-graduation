@@ -10,6 +10,7 @@ var milk = {};
 milk.loadMilkMenu = function () {
     $.ajax({
         url: '/sun/milk/searchMilkMenu',
+        data: {isShelf: 1},
         type: 'GET',
         success: function (result) {
             $("#milk-menu").html("");
@@ -20,7 +21,8 @@ milk.loadMilkMenu = function () {
                     '" class="card-img-top" alt="' + val.milkName +
                     '"><div class="card-body"><h5 class="card-title">' + val.milkName +
                     '</h5><p class="card-text">价格:&nbsp;<code>$' + val.milkPrice +
-                    '</code></p><button type="button" class="btn btn-outline-warning btn-sm float-left">下架</button><button type="button" class="btn btn-outline-success btn-sm float-right">下单</button></div></div>'
+                    '</code></p><button type="button" class="btn btn-outline-warning btn-sm float-left" onclick="milkDown(' + val.id +
+                    ')">下架</button><button type="button" class="btn btn-outline-success btn-sm float-right">下单</button></div></div>'
                 if ((item + 1) % 5 === 1) {
                     list = list + start + card;
                 } else if ((item + 1) % 5 === 0) {
@@ -123,6 +125,26 @@ function deleteMilk(id) {
             success: function (result) {
                 alert(result.msg);
                 user.loadUser();
+            }
+        })
+    }
+}
+
+function milkDown(id) {
+    var msg = confirm("确定下架吗?");
+    if (msg) {
+        $.ajax({
+            url: '/sun/milk/save_update',
+            type: 'POST',
+            data: {
+                id: id, isShelf: 0
+            },
+            success: function (result) {
+                if (result.code === 1)
+                    milk.loadMilkMenu();
+                else {
+                    alert(result.msg);
+                }
             }
         })
     }
