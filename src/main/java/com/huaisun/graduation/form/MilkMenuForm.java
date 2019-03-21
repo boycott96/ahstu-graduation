@@ -3,7 +3,9 @@ package com.huaisun.graduation.form;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -13,7 +15,9 @@ import java.math.BigDecimal;
  */
 @ApiModel
 @Data
-public class MilkMenuForm {
+public class MilkMenuForm implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "奶茶id", dataType = "Integer")
     private Integer id;
@@ -29,4 +33,7 @@ public class MilkMenuForm {
 
     @ApiModelProperty(value = "下架", dataType = "Integer", allowableValues = "0,1")
     private Integer isShelf;
+
+    @ApiModelProperty(value = "图片", dataType = "MultipartFile")
+    private MultipartFile milkImg;
 }

@@ -10,9 +10,14 @@ import com.huaisun.graduation.service.MilkMenuService;
 import com.huaisun.graduation.util.Result;
 import com.huaisun.graduation.util.Tools;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ClassUtils;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author sunruiguang
@@ -51,11 +56,26 @@ public class MilkMenuServiceImpl implements MilkMenuService {
     }
 
     @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public Result saveOrUpdate(MilkMenuForm form) {
 
         if (Tools.isEmpty(form)) {
             return Result.failure(ResultCode.PARAM_IS_BLANK);
         }
+
+        if (Tools.isNotEmpty(form.getMilkImg())) {
+            String path = Objects.requireNonNull(Objects.requireNonNull(ClassUtils.getDefaultClassLoader()).getResource("")).getPath() + "static/images/milk";
+            File file = new File(path, form.getMilkAddress());
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+            try {
+                form.getMilkImg().transferTo(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         if (Tools.isEmpty(form.getId())) {
             //新增
@@ -63,7 +83,7 @@ public class MilkMenuServiceImpl implements MilkMenuService {
             tMilkMenu.setMilkName(form.getMilkName());
             tMilkMenu.setMilkPrice(form.getMilkPrice());
             tMilkMenu.setMilkAddress(form.getMilkAddress());
-            tMilkMenu.setIsShelf(0);
+            tMilkMenu.setIsShelf(1);
             tMilkMenuMapper.insert(tMilkMenu);
         } else {
             //更新

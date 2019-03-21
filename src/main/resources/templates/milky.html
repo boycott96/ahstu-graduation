@@ -41,7 +41,10 @@
         </nav>
     </div>
     <!--奶茶菜单-->
-    <div class="card-deck">
+    <div id="milk-menu">
+
+    </div>
+    <div class="">
     </div>
     <!-- 添加模态框 -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -54,12 +57,14 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form class="forms-sample" id="milk-form">
+                <form class="forms-sample" id="milk-form" action="/sun/milk/save_update" method="POST"
+                      enctype="multipart/form-data">
+                    <input type="hidden" id="inputMilkId" name="id">
+                    <div class="modal-body">
                         <div class="form-group row">
                             <label for="inputMilkName" class="col-sm-3 col-form-label">奶茶名</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputMilkName" name="inputMilkName"
+                                <input type="text" class="form-control" id="inputMilkName" name="milkName"
                                        placeholder="奶茶名">
                             </div>
                         </div>
@@ -72,17 +77,17 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">0.00</span>
                                 </div>
-                                <input type="text" class="form-control" id="inputMilkPrice" name="inputMilkPrice"
+                                <input type="text" class="form-control" id="inputMilkPrice" name="milkPrice"
                                        placeholder="奶茶价格">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">图片地址</label>
                             <div class="col-sm-9">
-                                <input type="file" name="img[]" class="file-upload-default">
+                                <input type="file" name="milkImg" class="file-upload-default">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" disabled id="inputMilkAddress"
-                                           name="inputMilkAddress"
+                                    <input type="text" class="form-control" id="inputMilkAddress"
+                                           name="milkAddress"
                                            placeholder="上传图片">
                                     <span class="input-group-append">
                                         <button class="file-upload-browse btn btn-gradient-info"
@@ -91,13 +96,13 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <small class="form-text text-danger" id="checkMilk"></small>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-success" onclick="saveData()">保存</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <small class="form-text text-danger" id="checkMilk"></small>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-success">保存</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -9,9 +9,14 @@ spring:
     view:
       prefix: classpath:/templates/
       suffix: .html
+  ################ upload ################
+  servlet:
+    multipart:
+      max-file-size: 2MB
+
   ################ datasource ############
   datasource:
-    url: jdbc:mysql://47.100.227.176:3306/db_wei_xiao?serverTimezone=UTC
+    url: jdbc:mysql://47.100.227.176:3306/db_wei_xiao?ullNamePatternMatchesAll=true&amp;serverTimezone=GMT%2b8?useUnicode=true&characterEncoding=utf8
     username: huaisun
     password: huaisun
     driver-class-name: com.mysql.jdbc.Driver

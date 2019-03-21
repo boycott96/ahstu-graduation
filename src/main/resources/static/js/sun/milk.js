@@ -12,15 +12,24 @@ milk.loadMilkMenu = function () {
         url: '/sun/milk/searchMilkMenu',
         type: 'GET',
         success: function (result) {
-            $(".card-deck").html("");
+            $("#milk-menu").html("");
+            var start = '<div class="card-deck">';
+            var list = '';
             $.each(result.data, function (item, val) {
                 var card = '<div class="card col-md-2"><img src="../static/images/milk/' + val.milkAddress +
                     '" class="card-img-top" alt="' + val.milkName +
                     '"><div class="card-body"><h5 class="card-title">' + val.milkName +
                     '</h5><p class="card-text">价格:&nbsp;<code>$' + val.milkPrice +
                     '</code></p><button type="button" class="btn btn-outline-warning btn-sm float-left">下架</button><button type="button" class="btn btn-outline-success btn-sm float-right">下单</button></div></div>'
-                $(".card-deck").append(card);
+                if ((item + 1) % 5 === 1) {
+                    list = list + start + card;
+                } else if ((item + 1) % 5 === 0) {
+                    list = list + card + '</div>';
+                } else {
+                    list = list + card;
+                }
             });
+            $("#milk-menu").html(list);
         }
     });
 };
@@ -95,6 +104,7 @@ function editMilk(id) {
         type: 'GET',
         data: {id: id},
         success: function (result) {
+            $("#inputMilkId").val(result.data.id);
             $("#inputMilkName").val(result.data.milkName);
             $("#inputMilkPrice").val(result.data.milkPrice);
             $("#inputMilkAddress").val(result.data.milkAddress);
@@ -115,14 +125,5 @@ function deleteMilk(id) {
                 user.loadUser();
             }
         })
-    }
-}
-
-function saveData() {
-    if (milk.checkMilkName() && milk.checkMilkPrice() && milk.checkMilkAddress()) {
-        $("#checkMilk").html('');
-
-    } else {
-        $("#checkMilk").html('三项均不可为空，且价格小数最多两位');
     }
 }
