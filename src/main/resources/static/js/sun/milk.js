@@ -41,6 +41,7 @@ milk.loadMilkTable = function () {
     $.ajax({
         url: '/sun/milk/searchMilkMenu',
         type: 'GET',
+        data: {},
         success: function (result) {
             $("#milk-menu-table").html("");
             $.each(result.data, function (item, val) {
@@ -48,10 +49,14 @@ milk.loadMilkTable = function () {
                     '</th><td>' + val.milkName +
                     '</td><td>' + val.milkPrice +
                     '</td><td>' + val.milkAddress +
-                    '</td><td><i class="mdi mdi-tooltip-edit text-warning" data-toggle="modal" data-target="#exampleModal" onclick="editMilk(' + val.id +
-                    ')">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="mdi mdi-delete text-danger" onclick="deleteMilk(' + val.id +
+                    '</td><td><i class="mdi mdi-tooltip-edit text-warning" data-toggle="modal" data-target="#exampleModal" title="编辑" onclick="editMilk(' + val.id +
+                    ')">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="mdi mdi-delete text-danger" title="删除" onclick="deleteMilk(' + val.id +
+                    ')">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="mdi mdi-upload text-danger milk-up" title="上架" onclick="milkUp(' + val.id +
                     ')"></i></td></tr>';
                 $("#milk-menu-table").append(table);
+                if (val.isShelf === 1) {
+                    $(".milk-up").hide();
+                }
             });
         }
     });
@@ -148,4 +153,21 @@ function milkDown(id) {
             }
         })
     }
+}
+
+function milkUp(id) {
+    $.ajax({
+        url: '/sun/milk/save_update',
+        type: 'POST',
+        data: {
+            id: id, isShelf: 1
+        },
+        success: function (result) {
+            if (result.code === 1)
+                milk.loadMilkMenu();
+            else {
+                alert(result.msg);
+            }
+        }
+    })
 }

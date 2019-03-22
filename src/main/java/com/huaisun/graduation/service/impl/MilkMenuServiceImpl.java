@@ -31,12 +31,13 @@ public class MilkMenuServiceImpl implements MilkMenuService {
     private TMilkMenuMapper tMilkMenuMapper;
 
     @Override
-    public Result searchMilkMenu() {
+    public Result searchMilkMenu(MilkMenuForm form) {
 
         TMilkMenuExample example = new TMilkMenuExample();
         TMilkMenuExample.Criteria criteria = example.createCriteria();
-
-        criteria.andIsShelfEqualTo(1);
+        if (Tools.isNotEmpty(form.getIsShelf())) {
+            criteria.andIsShelfEqualTo(form.getIsShelf());
+        }
         List<TMilkMenu> milkMenuList = tMilkMenuMapper.selectByExample(example);
         return Result.success(milkMenuList);
     }

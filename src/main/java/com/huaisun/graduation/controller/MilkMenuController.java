@@ -27,8 +27,8 @@ public class MilkMenuController {
 
     @ApiOperation(value = "奶茶菜单[查询奶茶菜单]")
     @GetMapping("/searchMilkMenu")
-    public Result searchMilkMenu() {
-        return milkMenuService.searchMilkMenu();
+    public Result searchMilkMenu(MilkMenuForm from) {
+        return milkMenuService.searchMilkMenu(from);
     }
 
     @ApiOperation(value = "奶茶菜单[根据id获取对应的奶茶详情]")

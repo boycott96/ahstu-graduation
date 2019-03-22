@@ -14,8 +14,9 @@ public interface MilkMenuService {
      * 查询上架奶茶菜单
      *
      * @return Result
+     * @param from
      */
-    Result searchMilkMenu();
+    Result searchMilkMenu(MilkMenuForm from);
 
     /**
      * 根据id查询奶茶详情
