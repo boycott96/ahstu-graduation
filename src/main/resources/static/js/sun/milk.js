@@ -22,7 +22,8 @@ milk.loadMilkMenu = function () {
                     '"><div class="card-body"><h5 class="card-title">' + val.milkName +
                     '</h5><p class="card-text">价格:&nbsp;<code>$' + val.milkPrice +
                     '</code></p><button type="button" class="btn btn-outline-warning btn-sm float-left" onclick="milkDown(' + val.id +
-                    ')">下架</button><button type="button" class="btn btn-outline-success btn-sm float-right">下单</button></div></div>'
+                    ')">下架</button><button type="button" class="btn btn-outline-success btn-sm float-right" onclick="buyMilk(' + val.id +
+                    ')">下单</button></div></div>';
                 if ((item + 1) % 5 === 1) {
                     list = list + start + card;
                 } else if ((item + 1) % 5 === 0) {
@@ -31,7 +32,7 @@ milk.loadMilkMenu = function () {
                     list = list + card;
                 }
             });
-            $("#milk-menu").html(list);
+            $('#milk-menu').append(list);
         }
     });
 };
@@ -170,4 +171,20 @@ function milkUp(id) {
             }
         }
     })
+}
+
+function buyMilk(id) {
+    $('#buyMilkModal').modal('show');
+    $.ajax({
+        url: '/sun/milk/getMilk',
+        type: 'GET',
+        data: {id: id},
+        success: function (result) {
+            return result;
+        }
+    });
+}
+
+function selectUser() {
+    $('#userModal').modal('show');
 }
