@@ -7,3 +7,16 @@
     margin-bottom: 20px;
 }
 
+#queryUser {
+    margin-left: 20px;
+    margin-top: 44px;
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}

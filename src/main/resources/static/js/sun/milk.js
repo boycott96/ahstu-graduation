@@ -2,6 +2,7 @@ $(function () {
     milk.loadMilkMenu();
     milk.editClick();
     milk.clearMilkModal();
+    milk.selectUser();
 });
 
 var milk = {};
@@ -104,6 +105,12 @@ milk.clearMilkModal = function () {
     });
 };
 
+milk.selectUser = function () {
+    $("#buyUser").click(function () {
+        $("#userPopover").popover('show');
+    });
+};
+
 function editMilk(id) {
     $("#editModal").css('z-index', 999);
     $("#exampleModalLabel").html("编辑奶茶菜单");
@@ -183,8 +190,4 @@ function buyMilk(id) {
             return result;
         }
     });
-}
-
-function selectUser() {
-    $('#userModal').modal('show');
 }
