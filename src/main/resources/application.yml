@@ -9,12 +9,17 @@ spring:
     view:
       prefix: classpath:/templates/
       suffix: .html
+  ################ upload ################
+  servlet:
+    multipart:
+      max-file-size: 2MB
+
   ################ datasource ############
   datasource:
-    url: jdbc:mysql://localhost:3306/db_wei_xiao?serverTimezone=UTC
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://134.175.89.83:3306/db_wei_xiao?useSSL=false&ullNamePatternMatchesAll=true&amp;serverTimezone=GMT%2b8?useUnicode=true&characterEncoding=utf8
+    username: huaisun
+    password: Xy971002
+    driver-class-name: com.mysql.jdbc.Driver
     tomcat:
       max-active: 20
       max-idle: 8

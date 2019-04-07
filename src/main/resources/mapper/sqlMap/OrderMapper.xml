@@ -12,8 +12,8 @@
         O.COUNT AS count,
         O.COST AS cost,
         O.PAYMENT AS payment
-        FROM T_ORDER O
-        JOIN T_USER U ON O.U_ID = U.ID
+        FROM t_order O
+        JOIN t_user U ON O.U_ID = U.ID
         <where>
             O.VALID = 1
             <if test="name != null">
