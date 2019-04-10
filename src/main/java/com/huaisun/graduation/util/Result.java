@@ -3,12 +3,14 @@ package com.huaisun.graduation.util;
 import com.huaisun.graduation.constants.ResultCode;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author huaisun
  * @date 2019/2/22 19:15
  */
 @Data
-public class Result {
+public class Result<T> {
 
     private Integer code;
 
@@ -16,7 +18,10 @@ public class Result {
 
     private Object data;
 
-    public Result() {}
+    private T page;
+
+    public Result() {
+    }
 
     public Result(Integer code, String msg) {
         this.code = code;

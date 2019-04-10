@@ -1,11 +1,13 @@
 package com.huaisun.graduation.user.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.huaisun.graduation.auto.dao.TUser;
 import com.huaisun.graduation.auto.dao.TUserExample;
 import com.huaisun.graduation.auto.dao.TUserKey;
 import com.huaisun.graduation.auto.mapper.TUserMapper;
+import com.huaisun.graduation.common.entity.PageEntity;
 import com.huaisun.graduation.constants.ResultCode;
-import com.huaisun.graduation.constants.VarConstants;
 import com.huaisun.graduation.user.form.UserForm;
 import com.huaisun.graduation.user.service.UserService;
 import com.huaisun.graduation.util.Result;
@@ -31,9 +33,10 @@ public class UserServiceImpl implements UserService {
     private TUserMapper userMapper;
 
     @Override
-    public Result searchUser(UserForm form) {
-
+    public Result<PageInfo<TUser>> searchUser(UserForm form) {
+        Result<PageInfo<TUser>> result = new Result<>();
         TUserExample example = new TUserExample();
+        PageHelper.startPage(form.getCurrentPage(), form.getPageSize());
 
         if (Tools.isNotEmpty(form.getName())) {
             TUserExample.Criteria criteria1 = example.createCriteria();
@@ -55,7 +58,9 @@ public class UserServiceImpl implements UserService {
 
         List<TUser> userList = userMapper.selectByExample(example);
 
-        return Result.success(userList);
+        PageInfo<TUser> pageInfo = new PageInfo<>(userList);
+        result.setPage(pageInfo);
+        return result;
     }
 
     @Override

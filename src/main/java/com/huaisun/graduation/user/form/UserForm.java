@@ -1,6 +1,6 @@
 package com.huaisun.graduation.user.form;
 
-import com.huaisun.graduation.common.form.BaseForm;
+import com.huaisun.graduation.common.form.PageForm;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @ApiModel
 @Data
-public class UserForm extends BaseForm {
+public class UserForm extends PageForm {
 
     @ApiModelProperty(value = "用户id", dataType = "Integer")
     private Integer id;

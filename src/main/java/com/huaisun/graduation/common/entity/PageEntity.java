@@ -1,9 +1,9 @@
-package com.huaisun.graduation.common.form;
+package com.huaisun.graduation.common.entity;
 
 import lombok.Data;
 
 @Data
-public class BaseForm {
+public class PageEntity {
 
     /**
      * 表格大小
@@ -14,4 +14,9 @@ public class BaseForm {
      * 表格当前页面
      */
     private Integer currentPage;
+
+    /**
+     * 总数
+     */
+    private Integer total;
 }
