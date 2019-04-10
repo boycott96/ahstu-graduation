@@ -1,6 +1,6 @@
-package com.huaisun.graduation.service;
+package com.huaisun.graduation.user.service;
 
-import com.huaisun.graduation.form.UserForm;
+import com.huaisun.graduation.user.form.UserForm;
 import com.huaisun.graduation.util.Result;
 
 /**

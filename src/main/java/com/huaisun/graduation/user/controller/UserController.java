@@ -1,7 +1,7 @@
-package com.huaisun.graduation.controller;
+package com.huaisun.graduation.user.controller;
 
-import com.huaisun.graduation.form.UserForm;
-import com.huaisun.graduation.service.UserService;
+import com.huaisun.graduation.user.form.UserForm;
+import com.huaisun.graduation.user.service.UserService;
 import com.huaisun.graduation.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

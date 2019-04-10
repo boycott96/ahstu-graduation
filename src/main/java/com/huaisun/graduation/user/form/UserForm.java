@@ -1,16 +1,19 @@
-package com.huaisun.graduation.form;
+package com.huaisun.graduation.user.form;
 
+import com.huaisun.graduation.common.form.BaseForm;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author huaisun
  * @date 2019/2/25 15:38
  */
+@EqualsAndHashCode(callSuper = true)
 @ApiModel
 @Data
-public class UserForm {
+public class UserForm extends BaseForm {
 
     @ApiModelProperty(value = "用户id", dataType = "Integer")
     private Integer id;
@@ -32,7 +35,4 @@ public class UserForm {
 
     @ApiModelProperty(value = "消费总额", dataType = "Float")
     private Float cost;
-
-    @ApiModelProperty(value = "是否有日期限制", dataType = "String", allowableValues = "1,0")
-    private String isDate;
 }

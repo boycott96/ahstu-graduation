@@ -1,4 +1,4 @@
-package com.huaisun.graduation.service.impl;
+package com.huaisun.graduation.user.service.impl;
 
 import com.huaisun.graduation.auto.dao.TUser;
 import com.huaisun.graduation.auto.dao.TUserExample;
@@ -6,8 +6,8 @@ import com.huaisun.graduation.auto.dao.TUserKey;
 import com.huaisun.graduation.auto.mapper.TUserMapper;
 import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.constants.VarConstants;
-import com.huaisun.graduation.form.UserForm;
-import com.huaisun.graduation.service.UserService;
+import com.huaisun.graduation.user.form.UserForm;
+import com.huaisun.graduation.user.service.UserService;
 import com.huaisun.graduation.util.Result;
 import com.huaisun.graduation.util.TimeUtil;
 import com.huaisun.graduation.util.Tools;
@@ -34,7 +34,6 @@ public class UserServiceImpl implements UserService {
     public Result searchUser(UserForm form) {
 
         TUserExample example = new TUserExample();
-        TUserExample.Criteria criteria = example.createCriteria();
 
         if (Tools.isNotEmpty(form.getName())) {
             TUserExample.Criteria criteria1 = example.createCriteria();
@@ -52,10 +51,6 @@ public class UserServiceImpl implements UserService {
             TUserExample.Criteria criteria3 = example.createCriteria();
             criteria3.andPhoneLike("%" + form.getPhone() + "%");
             example.or(criteria3);
-        }
-
-        if (form.getIsDate().equals(VarConstants.START)) {
-            criteria.andCreateDateBetween(TimeUtil.getNowWeekStart(), new Date());
         }
 
         List<TUser> userList = userMapper.selectByExample(example);
