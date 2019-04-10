@@ -40,7 +40,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="t_employ" modelType="hierarchical">
+        <!--<table tableName="t_employ" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
         <table tableName="t_order" modelType="hierarchical">
@@ -51,6 +51,10 @@
         </table>
 
         <table tableName="t_milk_menu" modelType="hierarchical">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>-->
+
+        <table tableName="t_cart" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
 
