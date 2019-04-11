@@ -6,7 +6,6 @@ import com.huaisun.graduation.auto.dao.TUser;
 import com.huaisun.graduation.auto.dao.TUserExample;
 import com.huaisun.graduation.auto.dao.TUserKey;
 import com.huaisun.graduation.auto.mapper.TUserMapper;
-import com.huaisun.graduation.common.entity.PageEntity;
 import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.user.form.UserForm;
 import com.huaisun.graduation.user.service.UserService;
