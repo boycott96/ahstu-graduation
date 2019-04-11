@@ -28,22 +28,10 @@ public class UserController {
         return service.searchUser(form);
     }
 
-    @ApiOperation(value = "用户[计算星期用户的增长率]")
-    @GetMapping("/getUserIncrease")
-    public Result getUserIncrease() {
-        return service.getUserIncrease();
-    }
-
     @ApiOperation(value = "用户[新增用户]")
     @PostMapping("/saveOrUpdateUser")
-    public Result saveOrUpdateUser(UserForm form) {
+    public Result saveOrUpdateUser(@RequestBody UserForm form) {
         return service.saveOrUpdateUser(form);
-    }
-
-    @ApiOperation(value = "用户[根据id获取用户信息]")
-    @GetMapping("/getUser")
-    public Result getUser(UserForm form) {
-        return service.getUser(form);
     }
 
     @ApiOperation(value = "用户[删除用户]")

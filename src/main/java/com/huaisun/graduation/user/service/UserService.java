@@ -19,27 +19,12 @@ public interface UserService {
     Result searchUser(UserForm form);
 
     /**
-     * 计算用户增长率(星期)
-     *
-     * @return Result
-     */
-    Result getUserIncrease();
-
-    /**
      * 新增或更新用户
      *
      * @param form form表单
      * @return Result
      */
     Result saveOrUpdateUser(UserForm form);
-
-    /**
-     * 根据id 获取用户信息
-     *
-     * @param form 表单
-     * @return Result
-     */
-    Result getUser(UserForm form);
 
     /**
      * 根据id 删除用户

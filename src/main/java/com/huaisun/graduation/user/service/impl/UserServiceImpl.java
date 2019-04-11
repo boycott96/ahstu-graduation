@@ -10,7 +10,6 @@ import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.user.form.UserForm;
 import com.huaisun.graduation.user.service.UserService;
 import com.huaisun.graduation.util.Result;
-import com.huaisun.graduation.util.TimeUtil;
 import com.huaisun.graduation.util.Tools;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,26 +59,6 @@ public class UserServiceImpl implements UserService {
         PageInfo<TUser> pageInfo = new PageInfo<>(userList);
         result.setPage(pageInfo);
         return result;
-    }
-
-    @Override
-    public Result getUserIncrease() {
-
-        TUserExample example = new TUserExample();
-        TUserExample.Criteria criteria = example.createCriteria();
-
-        criteria.andCreateDateBetween(TimeUtil.getLastWeekStart(), TimeUtil.getLastWeekEnd());
-
-        Long userCountLast = userMapper.countByExample(example);
-
-        TUserExample example1 = new TUserExample();
-        TUserExample.Criteria criteria1 = example1.createCriteria();
-
-        criteria1.andCreateDateBetween(TimeUtil.getNowWeekStart(), new Date());
-
-        Long userCountOne = userMapper.countByExample(example1);
-
-        return Result.success(100.0 * (userCountOne - userCountLast) / (userCountLast == 0 ? 1 : userCountLast));
     }
 
     @Override
@@ -137,22 +116,6 @@ public class UserServiceImpl implements UserService {
             }
         }
         return result;
-    }
-
-    @Override
-    public Result getUser(UserForm form) {
-        if (Tools.isEmpty(form) || Tools.isEmpty(form.getId())) {
-            return Result.failure(ResultCode.PARAM_IS_BLANK);
-        }
-
-        TUserKey userKey = new TUserKey();
-        userKey.setId(form.getId());
-
-        TUser user = userMapper.selectByPrimaryKey(userKey);
-        if (Tools.isEmpty(user)) {
-            return Result.failure(ResultCode.USER_NOT_EXIST);
-        }
-        return Result.success(user);
     }
 
     @Override

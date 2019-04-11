@@ -1,8 +1,10 @@
-package com.huaisun.graduation.controller;
+package com.huaisun.graduation.employ.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.huaisun.graduation.auto.dao.TEmploy;
 import com.huaisun.graduation.constants.ResultCode;
-import com.huaisun.graduation.form.EmployForm;
-import com.huaisun.graduation.service.EmployService;
+import com.huaisun.graduation.employ.form.EmployForm;
+import com.huaisun.graduation.employ.service.EmployService;
 import com.huaisun.graduation.util.Result;
 import com.huaisun.graduation.util.Tools;
 import io.swagger.annotations.Api;
@@ -27,18 +29,18 @@ public class EmployController {
 
     @ApiOperation(value = "员工管理[员工登陆]")
     @PostMapping("/login")
-    public Result login(@RequestBody EmployForm form, HttpServletRequest request) {
+    public Result login(EmployForm form, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Result result = service.searchEmploy(form);
+        Result result = service.login(form);
         session.setAttribute("employ", result.getData());
         result.setData(null);
         return result;
     }
 
-    @ApiOperation(value = "员工管理[员工注册]")
-    @PostMapping("/save_update")
-    public Result sign(EmployForm form) {
-        return service.saveOrUpdate(form);
+    @ApiOperation(value = "员工管理[查询员工]")
+    @GetMapping("/searchEmploy")
+    public Result<PageInfo<TEmploy>> searchEmploy(EmployForm form) {
+        return service.searchEmploy(form);
     }
 
     @ApiOperation(value = "员工[检查员工是否登陆]")
