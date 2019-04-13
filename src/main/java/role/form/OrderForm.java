@@ -1,4 +1,4 @@
-package com.huaisun.graduation.form;
+package role.form;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

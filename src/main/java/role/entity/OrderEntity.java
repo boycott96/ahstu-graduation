@@ -1,4 +1,4 @@
-package com.huaisun.graduation.entity;
+package role.entity;
 
 import com.huaisun.graduation.auto.dao.TOrder;
 import io.swagger.annotations.ApiModel;

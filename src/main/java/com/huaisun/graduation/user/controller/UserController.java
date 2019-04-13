@@ -30,7 +30,7 @@ public class UserController {
 
     @ApiOperation(value = "用户[新增用户]")
     @PostMapping("/saveOrUpdateUser")
-    public Result saveOrUpdateUser(@RequestBody UserForm form) {
+    public Result saveOrUpdateUser(UserForm form) {
         return service.saveOrUpdateUser(form);
     }
 
