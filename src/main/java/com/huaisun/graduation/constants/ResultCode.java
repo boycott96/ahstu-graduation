@@ -57,7 +57,10 @@ public enum ResultCode {
     SIGN_SAME_PHONE(80001, "手机号已注册"),
 
     /* 注册错误：90001-99999 */
-    ORDER_NOT_EXIST(90001, "订单不存在");
+    ORDER_NOT_EXIST(90001, "订单不存在"),
+
+    /* 奶茶错误: 100001-999999 */
+    MILK_DELETE_ERROR(100001, "奶茶删除失败");
 
     private Integer code;
 

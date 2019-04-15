@@ -7,10 +7,7 @@ import com.huaisun.graduation.milk.service.MilkMenuService;
 import com.huaisun.graduation.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -43,5 +40,11 @@ public class MilkMenuController {
     @PostMapping("/saveOrUpdateMilk")
     public Result saveOrUpdateMilk(MilkMenuForm form) {
         return milkMenuService.saveOrUpdateMilk(form);
+    }
+
+    @ApiOperation(value = "奶茶菜单[删除奶茶]")
+    @DeleteMapping("/deleteMilk")
+    public Result deleteMilk(MilkMenuForm form) {
+        return milkMenuService.deleteMilk(form);
     }
 }

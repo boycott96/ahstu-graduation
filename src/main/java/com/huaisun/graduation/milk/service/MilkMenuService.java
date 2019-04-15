@@ -34,4 +34,12 @@ public interface MilkMenuService {
      * @return Result
      */
     Result saveOrUpdateMilk(MilkMenuForm form);
+
+    /**
+     * 删除奶茶
+     *
+     * @param form 表单信息
+     * @return Result
+     */
+    Result deleteMilk(MilkMenuForm form);
 }

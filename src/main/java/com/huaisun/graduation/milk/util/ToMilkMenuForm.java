@@ -10,19 +10,20 @@ public class ToMilkMenuForm {
      * 将form表单转化成奶茶菜单实体
      *
      * @param form 表单信息
-     * @return TMilkMenu
+     * @param milkMenu 实体
      */
-    protected TMilkMenu toMilkMenuForm(MilkMenuForm form) {
-        TMilkMenu tMilkMenu = new TMilkMenu();
+    protected void toMilkMenuForm(MilkMenuForm form, TMilkMenu milkMenu) {
         if (Tools.isNotEmpty(form.getMilkName())) {
-            tMilkMenu.setMilkName(form.getMilkName());
+            milkMenu.setMilkName(form.getMilkName());
         }
         if (Tools.isNotEmpty(form.getMilkAddress())) {
-            tMilkMenu.setMilkAddress(form.getMilkAddress());
+            milkMenu.setMilkAddress(form.getMilkAddress());
         }
         if (Tools.isNotEmpty(form.getMilkPrice())) {
-            tMilkMenu.setMilkPrice(form.getMilkPrice());
+            milkMenu.setMilkPrice(form.getMilkPrice());
         }
-        return tMilkMenu;
+        if (Tools.isNotEmpty(form.getIsShelf())) {
+            milkMenu.setIsShelf(form.getIsShelf());
+        }
     }
 }
