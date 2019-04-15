@@ -20,7 +20,19 @@ import java.math.BigDecimal;
 @Data
 public class MilkMenuForm extends PageForm {
 
+    @ApiModelProperty(value = "奶茶id", dataType = "String")
+    private Integer id;
+
     @ApiModelProperty(value = "奶茶名", dataType = "String")
     private String milkName;
+
+    @ApiModelProperty(value = "奶茶图片地址", dataType = "String")
+    private String milkAddress;
+
+    @ApiModelProperty(value = "奶茶是否上架", dataType = "Integer")
+    private Integer isShelf;
+
+    @ApiModelProperty(value = "奶茶价格", dataType = "BigDecimal")
+    private BigDecimal milkPrice;
 
 }

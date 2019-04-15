@@ -22,9 +22,16 @@ public interface MilkMenuService {
     /**
      * 查询上架奶茶菜单
      *
-     * @param from
+     * @param from 表单信息
      * @return Result
      */
     Result<PageInfo<TMilkMenu>> searchMilkMenu(MilkMenuForm from);
 
+    /**
+     * 修改奶茶菜单
+     *
+     * @param form 表单信息
+     * @return Result
+     */
+    Result saveOrUpdateMilk(MilkMenuForm form);
 }

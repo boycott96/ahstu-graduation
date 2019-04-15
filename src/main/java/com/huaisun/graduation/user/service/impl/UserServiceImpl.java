@@ -9,6 +9,7 @@ import com.huaisun.graduation.auto.mapper.TUserMapper;
 import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.user.form.UserForm;
 import com.huaisun.graduation.user.service.UserService;
+import com.huaisun.graduation.user.util.ToUserForm;
 import com.huaisun.graduation.util.Result;
 import com.huaisun.graduation.util.Tools;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ToUserForm implements UserService {
 
     @Resource
     private TUserMapper userMapper;
@@ -64,58 +65,39 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Result saveOrUpdateUser(UserForm form) {
-        Result result = new Result();
         if (Tools.isEmpty(form)) {
-            result.setResultCode(ResultCode.PARAM_IS_BLANK);
-            return result;
+            return Result.failure(ResultCode.PARAM_IS_BLANK);
         }
-        TUser user = new TUser();
 
         if (Tools.isEmpty(form.getId())) {
-
-            user.setName(form.getName());
-            user.setEmail(form.getEmail());
-            user.setPhone(form.getPhone());
+            TUser user = new TUser();
+            //新增
+            super.toUserForm(form, user);
             user.setCreateDate(new Date());
             user.setIntegral(new BigDecimal(0));
             user.setBalance(new BigDecimal(0));
             user.setCost(new BigDecimal(0));
-
-            int num = userMapper.insert(user);
-            if (num < 1) {
-                result.setResultCode(ResultCode.USER_SAVE_ERROR);
-            } else {
-                result.setResultCode(ResultCode.SUCCESS);
-            }
-        } else {
-            user.setId(form.getId());
-            TUser user1 = userMapper.selectByPrimaryKey(user);
-
-            if (Tools.isEmpty(user1)) {
-                result.setResultCode(ResultCode.PARAM_IS_INVALID);
-            } else {
-                if (Tools.isNotEmpty(form.getName())) {
-                    user1.setName(form.getName());
-                }
-
-                if (Tools.isNotEmpty(form.getEmail())) {
-                    user1.setEmail(form.getEmail());
-                }
-
-                if (Tools.isNotEmpty(form.getPhone())) {
-                    user1.setPhone(form.getPhone());
-                }
-
-                int num = userMapper.updateByPrimaryKey(user1);
-
-                if (num == 1) {
-                    result.setResultCode(ResultCode.SUCCESS);
-                } else {
-                    result.setResultCode(ResultCode.USER_UPDATE_ERROR);
-                }
-            }
+            return userMapper.insert(user) > 0 ? Result.success() : Result.failure(ResultCode.USER_SAVE_ERROR);
         }
-        return result;
+        TUserKey key = new TUserKey();
+        key.setId(form.getId());
+        TUser user = userMapper.selectByPrimaryKey(key);
+        if (Tools.isEmpty(user)) {
+            return Result.failure(ResultCode.PARAM_IS_BLANK);
+        } else {
+            super.toUserForm(form, user);
+            if (Tools.isNotEmpty(form.getBalance())) {
+                user.setBalance(form.getBalance());
+            }
+            if (Tools.isNotEmpty(form.getCost())) {
+                user.setCost(form.getCost());
+            }
+            if (Tools.isNotEmpty(form.getIntegral())) {
+                user.setIntegral(form.getIntegral());
+            }
+
+        }
+        return userMapper.updateByPrimaryKey(user) > 0 ? Result.success() : Result.failure(ResultCode.USER_UPDATE_ERROR);
     }
 
     @Override
@@ -128,10 +110,6 @@ public class UserServiceImpl implements UserService {
         TUserKey userKey = new TUserKey();
         userKey.setId(form.getId());
 
-        int num = userMapper.deleteByPrimaryKey(userKey);
-        if (num == 1) {
-            return Result.success();
-        }
-        return Result.failure(ResultCode.USER_NOT_EXIST);
+        return userMapper.deleteByPrimaryKey(userKey) > 0 ? Result.success() : Result.failure(ResultCode.USER_NOT_EXIST);
     }
 }

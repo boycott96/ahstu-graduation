@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
+
 /**
  * @author huaisun
  * @date 2019/2/25 15:38
@@ -27,12 +29,12 @@ public class UserForm extends PageForm {
     @ApiModelProperty(value = "手机号码", dataType = "String")
     private String phone;
 
-    @ApiModelProperty(value = "积分", dataType = "Integer")
-    private Integer integral;
+    @ApiModelProperty(value = "积分", dataType = "BigDecimal")
+    private BigDecimal integral;
 
-    @ApiModelProperty(value = "余额", dataType = "Float")
-    private Float balance;
+    @ApiModelProperty(value = "余额", dataType = "BigDecimal")
+    private BigDecimal balance;
 
-    @ApiModelProperty(value = "消费总额", dataType = "Float")
-    private Float cost;
+    @ApiModelProperty(value = "消费总额", dataType = "BigDecimal")
+    private BigDecimal cost;
 }

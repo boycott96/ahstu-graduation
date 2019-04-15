@@ -35,7 +35,13 @@ public class MilkMenuController {
 
     @ApiOperation(value = "奶茶菜单[查询奶茶菜单]")
     @GetMapping("/searchMilkMenu")
-    public Result<PageInfo<TMilkMenu>> searchMilkMenu(MilkMenuForm from) {
-        return milkMenuService.searchMilkMenu(from);
+    public Result<PageInfo<TMilkMenu>> searchMilkMenu(MilkMenuForm form) {
+        return milkMenuService.searchMilkMenu(form);
+    }
+
+    @ApiOperation(value = "奶茶菜单[修改奶茶菜单]")
+    @PostMapping("/saveOrUpdateMilk")
+    public Result saveOrUpdateMilk(MilkMenuForm form) {
+        return milkMenuService.saveOrUpdateMilk(form);
     }
 }
