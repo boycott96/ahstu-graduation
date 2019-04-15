@@ -67,4 +67,14 @@ public class EmployServiceImpl extends ToEmployForm implements EmployService {
         super.toUserForm(form, employ);
         return tEmployMapper.updateByPrimaryKey(employ) > 0 ? Result.success() : Result.failure(ResultCode.EMPLOY_UPDATE_ERROR);
     }
+
+    @Override
+    public Result deleteEmploy(EmployForm form) {
+        if (Tools.isEmpty(form) || Tools.isEmpty(form.getId())) {
+            return Result.failure(ResultCode.PARAM_IS_BLANK);
+        }
+        TEmployKey key = new TEmployKey();
+        key.setId(form.getId());
+        return tEmployMapper.deleteByPrimaryKey(key) > 0 ? Result.success() : Result.failure(ResultCode.EMPLOY_DELETE_ERROR);
+    }
 }

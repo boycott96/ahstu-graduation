@@ -33,4 +33,11 @@ public interface EmployService {
      * @return Result
      */
     Result saveOrUpdateEmploy(EmployForm form);
+
+    /**
+     * 删除员工
+     * @param form 表单信息
+     * @return Result
+     */
+    Result deleteEmploy(EmployForm form);
 }

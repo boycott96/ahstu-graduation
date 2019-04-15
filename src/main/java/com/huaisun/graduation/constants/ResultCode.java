@@ -20,6 +20,7 @@ public enum ResultCode {
     USER_HAS_EXISTED(20002, "用户已存在"),
     USER_SAVE_ERROR(20003, "用户注册失败"),
     USER_UPDATE_ERROR(20004, "用户更新失败"),
+    USER_DELETE_ERROR(20005, "用户删除失败"),
 
     /* 员工错误：30001-39999*/
     EMPLOY_NOT_LOGGED_IN(30001, "员工未登录"),
@@ -29,6 +30,7 @@ public enum ResultCode {
     EMPLOY_HAS_EXISTED(30005, "员工已存在"),
     EMPLOY_SAVE_ERROR(30006, "员工注册失败"),
     EMPLOY_UPDATE_ERROR(30007, "员工更新失败"),
+    EMPLOY_DELETE_ERROR(30008, "员工删除失败"),
 
     /* 系统错误：40001-49999 */
     SYSTEM_INNER_ERROR(40001, "系统繁忙，请稍后重试"),

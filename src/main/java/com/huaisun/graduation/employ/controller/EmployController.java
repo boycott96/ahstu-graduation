@@ -66,4 +66,10 @@ public class EmployController {
     public Result saveOrUpdateEmploy(EmployForm form) {
         return service.saveOrUpdateEmploy(form);
     }
+
+    @ApiOperation(value = "员工管理[员工删除]")
+    @DeleteMapping("/deleteEmploy")
+    public Result deleteEmploy(EmployForm form) {
+        return service.deleteEmploy(form);
+    }
 }

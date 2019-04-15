@@ -106,10 +106,8 @@ public class UserServiceImpl extends ToUserForm implements UserService {
         if (Tools.isEmpty(form) || Tools.isEmpty(form.getId())) {
             return Result.failure(ResultCode.PARAM_IS_BLANK);
         }
-
         TUserKey userKey = new TUserKey();
         userKey.setId(form.getId());
-
-        return userMapper.deleteByPrimaryKey(userKey) > 0 ? Result.success() : Result.failure(ResultCode.USER_NOT_EXIST);
+        return userMapper.deleteByPrimaryKey(userKey) > 0 ? Result.success() : Result.failure(ResultCode.USER_DELETE_ERROR);
     }
 }
