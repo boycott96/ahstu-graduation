@@ -60,4 +60,10 @@ public class EmployController {
         }
         return result;
     }
+
+    @ApiOperation(value = "员工管理[员工注册]")
+    @PostMapping("/saveOrUpdateEmploy")
+    public Result saveOrUpdateEmploy(EmployForm form) {
+        return service.saveOrUpdateEmploy(form);
+    }
 }

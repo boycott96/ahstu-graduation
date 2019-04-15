@@ -33,4 +33,7 @@ public class EmployForm extends PageForm {
 
     @ApiModelProperty(value = "地址", dataType = "String")
     private String address;
+
+    @ApiModelProperty(value = "启用状态", dataType = "Integer")
+    private Integer valid;
 }

@@ -11,6 +11,7 @@ import com.huaisun.graduation.constants.VarConstants;
 import com.huaisun.graduation.employ.form.EmployForm;
 import com.huaisun.graduation.employ.mapper.EmployMapper;
 import com.huaisun.graduation.employ.service.EmployService;
+import com.huaisun.graduation.employ.util.ToEmployForm;
 import com.huaisun.graduation.util.Result;
 import com.huaisun.graduation.util.Tools;
 import org.springframework.stereotype.Service;
@@ -24,10 +25,13 @@ import java.util.List;
  * @date 2019/2/22 19:04
  */
 @Service
-public class EmployServiceImpl implements EmployService {
+public class EmployServiceImpl extends ToEmployForm implements EmployService {
 
     @Resource
     private EmployMapper employMapper;
+
+    @Resource
+    private TEmployMapper tEmployMapper;
 
     @Override
     public Result login(EmployForm form) {
@@ -42,5 +46,25 @@ public class EmployServiceImpl implements EmployService {
         List<TEmploy> tEmploys = employMapper.searchEmploy(form);
         result.setPage(new PageInfo<>(tEmploys));
         return result;
+    }
+
+    @Override
+    public Result saveOrUpdateEmploy(EmployForm form) {
+        if (Tools.isEmpty(form)) {
+            return Result.failure(ResultCode.PARAM_IS_BLANK);
+        }
+
+        if (Tools.isEmpty(form.getId())) {
+            //新增
+            TEmploy employ = new TEmploy();
+            super.toUserForm(form, employ);
+            employ.setCreateDate(new Date());
+            return tEmployMapper.insert(employ) > 0 ? Result.success() : Result.failure(ResultCode.EMPLOY_SAVE_ERROR);
+        }
+        TEmployKey key = new TEmployKey();
+        key.setId(form.getId());
+        TEmploy employ = tEmployMapper.selectByPrimaryKey(key);
+        super.toUserForm(form, employ);
+        return tEmployMapper.updateByPrimaryKey(employ) > 0 ? Result.success() : Result.failure(ResultCode.EMPLOY_UPDATE_ERROR);
     }
 }

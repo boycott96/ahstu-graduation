@@ -27,4 +27,10 @@ public interface EmployService {
      */
     Result<PageInfo<TEmploy>> searchEmploy(EmployForm form);
 
+    /**
+     * 注册和更新员工账号
+     * @param form 表单信息
+     * @return Result
+     */
+    Result saveOrUpdateEmploy(EmployForm form);
 }
