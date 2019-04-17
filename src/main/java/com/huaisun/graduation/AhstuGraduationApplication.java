@@ -7,9 +7,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.servlet.MultipartConfigElement;
 import java.util.Properties;
 
 /**
@@ -34,7 +36,7 @@ public class AhstuGraduationApplication {
         properties.setProperty("offsetAsPageNum","true");
         properties.setProperty("rowBoundsWithCount","true");
         properties.setProperty("reasonable","true");
-        properties.setProperty("dialect","mysql");    //配置mysql数据库的方言
+        properties.setProperty("dialect","mysql");
         pageHelper.setProperties(properties);
         return pageHelper;
     }

@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
@@ -37,5 +38,8 @@ public class MilkMenuForm extends PageForm {
 
     @ApiModelProperty(value = "奶茶价格", dataType = "BigDecimal")
     private BigDecimal milkPrice;
+
+    @ApiModelProperty(value = "奶茶图片", dataType = "MultipartFile")
+    private MultipartFile file;
 
 }

@@ -58,15 +58,15 @@ public class MilkMenuServiceImpl extends ToMilkMenuForm implements MilkMenuServi
     public Result saveOrUpdateMilk(MilkMenuForm form) {
         //判断form表单中传入的是新增或更新
         if (Tools.isEmpty(form.getId())) {
-            //新增
-            TMilkMenu tMilkMenu = new TMilkMenu();
-            super.toMilkMenuForm(form, tMilkMenu);
-            return tMilkMenuMapper.insert(tMilkMenu) > 0 ? Result.success() : Result.failure(ResultCode.USER_SAVE_ERROR);
-        }
-        //更新
-        TMilkMenuKey key = new TMilkMenuKey();
+        //新增
+        TMilkMenu tMilkMenu = new TMilkMenu();
+        super.toMilkMenuForm(form, tMilkMenu);
+        return tMilkMenuMapper.insert(tMilkMenu) > 0 ? Result.success() : Result.failure(ResultCode.USER_SAVE_ERROR);
+    }
+    //更新
+    TMilkMenuKey key = new TMilkMenuKey();
         key.setId(form.getId());
-        TMilkMenu tMilkMenu = tMilkMenuMapper.selectByPrimaryKey(key);
+    TMilkMenu tMilkMenu = tMilkMenuMapper.selectByPrimaryKey(key);
         super.toMilkMenuForm(form, tMilkMenu);
         return tMilkMenuMapper.updateByPrimaryKey(tMilkMenu) > 0 ? Result.success() : Result.failure(ResultCode.USER_UPDATE_ERROR);
     }

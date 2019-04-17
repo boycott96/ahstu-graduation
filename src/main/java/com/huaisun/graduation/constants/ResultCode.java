@@ -59,8 +59,11 @@ public enum ResultCode {
     /* 注册错误：90001-99999 */
     ORDER_NOT_EXIST(90001, "订单不存在"),
 
-    /* 奶茶错误: 100001-999999 */
-    MILK_DELETE_ERROR(100001, "奶茶删除失败");
+    /* 奶茶错误: 100001-109999 */
+    MILK_DELETE_ERROR(100001, "奶茶删除失败"),
+
+    /* 文件上传错误：110001-119999*/
+    FILE_UPLOAD_ERROR(100001, "文件上传失败");
 
     private Integer code;
 
