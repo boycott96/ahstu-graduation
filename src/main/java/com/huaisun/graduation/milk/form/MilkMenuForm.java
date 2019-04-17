@@ -26,11 +26,14 @@ public class MilkMenuForm extends PageForm {
     @ApiModelProperty(value = "奶茶名", dataType = "String")
     private String milkName;
 
+    @ApiModelProperty(value = "奶茶详情", dataType = "String")
+    private String milkDetail;
+
     @ApiModelProperty(value = "奶茶图片地址", dataType = "String")
-    private String milkAddress;
+    private String milkPhoto;
 
     @ApiModelProperty(value = "奶茶是否上架", dataType = "Integer")
-    private Integer isShelf;
+    private Integer shelf;
 
     @ApiModelProperty(value = "奶茶价格", dataType = "BigDecimal")
     private BigDecimal milkPrice;

@@ -5,7 +5,7 @@
 <generatorConfiguration>
 
     <!-- 本地数据库驱动程序jar包的全路径 -->
-    <classPathEntry location="F:\mysql-connector-java-5.1.47.jar"/>
+    <classPathEntry location="D:\java_jar\mysql-connector-java-5.1.47\mysql-connector-java-5.1.47.jar"/>
 
     <context id="context" targetRuntime="MyBatis3">
         <commentGenerator>
@@ -49,14 +49,18 @@
         <table tableName="t_user" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-
-        <table tableName="t_milk_menu" modelType="hierarchical">
+        <table tableName="t_detail_order" modelType="hierarchical">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="t_specifications" modelType="hierarchical">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="t_cart" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>-->
 
-        <table tableName="t_cart" modelType="hierarchical">
+        <table tableName="t_milk_menu" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-
     </context>
 </generatorConfiguration>

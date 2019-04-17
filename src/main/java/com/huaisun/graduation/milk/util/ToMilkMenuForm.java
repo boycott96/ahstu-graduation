@@ -16,14 +16,14 @@ public class ToMilkMenuForm {
         if (Tools.isNotEmpty(form.getMilkName())) {
             milkMenu.setMilkName(form.getMilkName());
         }
-        if (Tools.isNotEmpty(form.getMilkAddress())) {
-            milkMenu.setMilkAddress(form.getMilkAddress());
+        if (Tools.isNotEmpty(form.getMilkPhoto())) {
+            milkMenu.setMilkPhoto(form.getMilkPhoto());
         }
         if (Tools.isNotEmpty(form.getMilkPrice())) {
             milkMenu.setMilkPrice(form.getMilkPrice());
         }
-        if (Tools.isNotEmpty(form.getIsShelf())) {
-            milkMenu.setIsShelf(form.getIsShelf());
+        if (Tools.isNotEmpty(form.getShelf())) {
+            milkMenu.setShelf(form.getShelf());
         }
     }
 }
