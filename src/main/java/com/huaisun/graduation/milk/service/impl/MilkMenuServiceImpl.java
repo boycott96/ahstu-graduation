@@ -8,6 +8,7 @@ import com.huaisun.graduation.auto.dao.TMilkMenuKey;
 import com.huaisun.graduation.auto.mapper.TMilkMenuMapper;
 import com.huaisun.graduation.constants.ResultCode;
 import com.huaisun.graduation.milk.form.MilkMenuForm;
+import com.huaisun.graduation.milk.mapper.MilkMenuMapper;
 import com.huaisun.graduation.milk.service.MilkMenuService;
 import com.huaisun.graduation.milk.util.ToMilkMenuForm;
 import com.huaisun.graduation.util.Result;
@@ -26,6 +27,10 @@ import java.util.List;
 @Service
 public class MilkMenuServiceImpl extends ToMilkMenuForm implements MilkMenuService {
 
+
+    @Resource
+    private MilkMenuMapper milkMenuMapper;
+
     @Resource
     private TMilkMenuMapper tMilkMenuMapper;
 
@@ -40,13 +45,8 @@ public class MilkMenuServiceImpl extends ToMilkMenuForm implements MilkMenuServi
 
     @Override
     public Result<PageInfo<TMilkMenu>> searchMilkMenu(MilkMenuForm form) {
-        TMilkMenuExample example = new TMilkMenuExample();
-        TMilkMenuExample.Criteria criteria = example.createCriteria();
-        if (Tools.isNotEmpty(form.getMilkName())) {
-            criteria.andMilkNameLike("%" + form.getMilkName() + "%");
-        }
         PageHelper.startPage(form.getCurrentPage(), form.getPageSize());
-        List<TMilkMenu> milkMenuList = tMilkMenuMapper.selectByExample(example);
+        List<TMilkMenu> milkMenuList = milkMenuMapper.queryMilkMenu(form);
         PageInfo<TMilkMenu> pageInfo = new PageInfo<>(milkMenuList);
         Result<PageInfo<TMilkMenu>> result = new Result<>();
         result.setPage(pageInfo);
