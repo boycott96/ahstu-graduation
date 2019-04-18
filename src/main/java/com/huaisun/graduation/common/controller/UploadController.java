@@ -27,11 +27,11 @@ public class UploadController {
         }
 
         String fileName = "img" + System.currentTimeMillis() + ".jpg";
-        String filePath = "D:/design/sun-vue-element/static/img/milk/";
+        String filePath = "D:/Web Projects/sun-vue-element/static/img/milk/";
         File dest = new File(filePath + fileName);
         try {
             img.transferTo(dest);
-            return Result.success(filePath + fileName);
+            return Result.success(fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

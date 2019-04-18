@@ -9,7 +9,7 @@ public class ToMilkMenuForm {
     /**
      * 将form表单转化成奶茶菜单实体
      *
-     * @param form 表单信息
+     * @param form     表单信息
      * @param milkMenu 实体
      */
     protected void toMilkMenuForm(MilkMenuForm form, TMilkMenu milkMenu) {
@@ -21,6 +21,9 @@ public class ToMilkMenuForm {
         }
         if (Tools.isNotEmpty(form.getMilkPrice())) {
             milkMenu.setMilkPrice(form.getMilkPrice());
+        }
+        if (Tools.isNotEmpty(form.getMilkDetail())) {
+            milkMenu.setMilkDetail(form.getMilkDetail());
         }
         if (Tools.isNotEmpty(form.getShelf())) {
             milkMenu.setShelf(form.getShelf());

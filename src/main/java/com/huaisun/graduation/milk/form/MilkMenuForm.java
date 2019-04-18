@@ -39,7 +39,4 @@ public class MilkMenuForm extends PageForm {
     @ApiModelProperty(value = "奶茶价格", dataType = "BigDecimal")
     private BigDecimal milkPrice;
 
-    @ApiModelProperty(value = "奶茶图片", dataType = "MultipartFile")
-    private MultipartFile file;
-
 }
