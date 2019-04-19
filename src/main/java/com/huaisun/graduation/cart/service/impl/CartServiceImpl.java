@@ -1,6 +1,7 @@
 package com.huaisun.graduation.cart.service.impl;
 
 import com.huaisun.graduation.auto.dao.TCart;
+import com.huaisun.graduation.auto.dao.TCartKey;
 import com.huaisun.graduation.auto.mapper.TCartMapper;
 import com.huaisun.graduation.cart.form.CartForm;
 import com.huaisun.graduation.cart.service.CartService;
@@ -24,23 +25,22 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Result addCart(CartForm form) {
+        if (Tools.isEmpty(form.getMId()) || Tools.isEmpty(form.getKind())) {
+            return Result.failure(ResultCode.PARAM_IS_BLANK);
+        }
+        TCartKey tCartKey = new TCartKey();
+        tCartKey.setmId(form.getMId());
+        tCartKey.setKind(form.getKind());
 
-        TCart tCart = new TCart();
-        if (Tools.isNotEmpty(form.getMId())) {
+        TCart tCart = tCartMapper.selectByPrimaryKey(tCartKey);
+        if (Tools.isEmpty(tCart)) {
+            tCart = new TCart();
             tCart.setmId(form.getMId());
-        }
-        if (Tools.isNotEmpty(form.getUId())) {
-            tCart.setuId(form.getUId());
-        }
-        if (Tools.isNotEmpty(tCartMapper.selectByPrimaryKey(tCart))) {
-            return Result.failure(ResultCode.DATA_ALREADY_EXISTED);
-        }
-        if (Tools.isNotEmpty(form.getNumber())) {
             tCart.setNumber(form.getNumber());
+            tCart.setKind(form.getKind());
+            return tCartMapper.insert(tCart) > 0 ? Result.success() : Result.failure(ResultCode.INTERFACE_INNER_INVOKE_ERROR);
         }
-        if (tCartMapper.insert(tCart) == 1) {
-            return Result.success();
-        }
-        return Result.failure(ResultCode.INTERFACE_INNER_INVOKE_ERROR);
+        tCart.setNumber(tCart.getNumber() + form.getNumber());
+        return tCartMapper.updateByPrimaryKey(tCart) > 0 ? Result.success() : Result.failure(ResultCode.INTERFACE_INNER_INVOKE_ERROR);
     }
 }

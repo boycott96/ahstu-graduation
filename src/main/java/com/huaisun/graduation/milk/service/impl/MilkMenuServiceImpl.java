@@ -38,7 +38,7 @@ public class MilkMenuServiceImpl extends ToMilkMenuForm implements MilkMenuServi
     public Result getMilkMenu() {
         TMilkMenuExample example = new TMilkMenuExample();
         TMilkMenuExample.Criteria criteria = example.createCriteria();
-        criteria.andShelfEqualTo(0);
+        criteria.andShelfEqualTo(1);
         List<TMilkMenu> milkMenuList = tMilkMenuMapper.selectByExample(example);
         return Result.success(milkMenuList);
     }

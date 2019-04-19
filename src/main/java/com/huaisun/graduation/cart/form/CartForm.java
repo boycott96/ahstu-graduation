@@ -17,12 +17,12 @@ public class CartForm {
     private Integer mId;
 
     /**
-     * 用户id
-     */
-    private Integer uId;
-
-    /**
      * 数量
      */
     private Integer number;
+
+    /**
+     * 品种
+     */
+    private String kind;
 }

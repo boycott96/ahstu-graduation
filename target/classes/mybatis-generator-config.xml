@@ -55,12 +55,13 @@
         <table tableName="t_specifications" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-        <table tableName="t_cart" modelType="hierarchical">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>-->
 
         <table tableName="t_milk_menu" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>-->
+        <table tableName="t_cart" modelType="hierarchical">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
+
     </context>
 </generatorConfiguration>

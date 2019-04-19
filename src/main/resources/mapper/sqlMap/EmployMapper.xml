@@ -16,7 +16,7 @@
         select * from t_employ e
         <where>
             <if test="name != null and name != ''">
-                instr(name, #{name}) > 0 or instr(email, #{name}) >0 or instr(phone, #{name}) >0
+                instr(name, #{name}) or instr(email, #{name}) or instr(phone, #{name})
             </if>
         </where>
     </select>
