@@ -1,5 +1,6 @@
 package com.huaisun.graduation.order.form;
 
+import com.huaisun.graduation.common.form.PageForm;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @ApiModel
 @Data
-public class OrderForm {
+public class OrderForm extends PageForm {
 
     @ApiModelProperty(value = "用户姓名", dataType = "String")
     private String name;

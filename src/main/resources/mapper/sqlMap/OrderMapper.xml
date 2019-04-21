@@ -7,25 +7,15 @@
         O.ID AS id,
         U.NAME AS name,
         O.CREATE_DATE AS createDate,
-        O.MODE AS mode,
-        O.PRICE AS price,
-        O.COUNT AS count,
-        O.COST AS cost,
-        O.PAYMENT AS payment
+        O.valid as valid,
+        O.COST AS cost
         FROM t_order O
-        JOIN t_user U ON O.U_ID = U.ID
+        LEFT JOIN t_user U ON O.U_ID = U.ID
         <where>
-            O.VALID = 1
-            <if test="name != null">
-                and U.NAME like #{name}
-            </if>
-            <if test="id != null">
-                and O.ID like #{id}
-            </if>
-            <if test="mode != null">
-                and O.MODE = #{mode}
+            <if test="name != null and name!=''">
+                instr(U.name, #{name}) or instr(O.ID,#{name})
             </if>
         </where>
-        ORDER BY O.CREATE_DATE
+        ORDER BY O.CREATE_DATE desc
     </select>
 </mapper>
