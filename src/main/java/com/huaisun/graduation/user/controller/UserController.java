@@ -39,4 +39,10 @@ public class UserController {
     public Result deleteUser(UserForm form) {
         return service.deleteUser(form);
     }
+
+    @ApiOperation(value = "用户[获取下拉框用户信息]")
+    @GetMapping("/getUser")
+    public Result getUser() {
+        return service.getUser();
+    }
 }

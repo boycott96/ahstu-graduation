@@ -5,8 +5,7 @@ import com.huaisun.graduation.cart.service.CartService;
 import com.huaisun.graduation.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -23,8 +22,26 @@ public class CartController {
     private CartService cartService;
 
     @ApiOperation(value = "购物车[添加购物车]")
-    @RequestMapping("/addCart")
+    @PostMapping("/addCart")
     public Result addCart(CartForm form) {
         return cartService.addCart(form);
+    }
+
+    @ApiOperation(value = "购物车[获取购物车]")
+    @GetMapping("/getCart")
+    public Result getCart() {
+        return cartService.getCart();
+    }
+
+    @ApiOperation(value = "购物车[购物车详细数据]")
+    @GetMapping("/getDetailCart")
+    public Result getDetailCart() {
+        return cartService.getDetailCart();
+    }
+
+    @ApiOperation(value = "购物车[删除或清空]")
+    @DeleteMapping("/deleteCart")
+    public Result deleteCart(CartForm form) {
+        return cartService.deleteCart(form);
     }
 }

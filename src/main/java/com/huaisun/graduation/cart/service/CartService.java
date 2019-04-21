@@ -17,4 +17,25 @@ public interface CartService {
      * @return Result
      */
     Result addCart(CartForm form);
+
+    /**
+     * 获取购物车事件
+     *
+     * @return Result
+     */
+    Result getCart();
+
+    /**
+     * 获取购物车详细数据
+     *
+     * @return
+     */
+    Result getDetailCart();
+
+    /**
+     * 清空或删除购物车
+     *
+     * @return
+     */
+    Result deleteCart(CartForm form);
 }

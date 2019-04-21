@@ -7,7 +7,9 @@ import com.huaisun.graduation.auto.dao.TUserExample;
 import com.huaisun.graduation.auto.dao.TUserKey;
 import com.huaisun.graduation.auto.mapper.TUserMapper;
 import com.huaisun.graduation.constants.ResultCode;
+import com.huaisun.graduation.user.entity.UserSelectEntity;
 import com.huaisun.graduation.user.form.UserForm;
+import com.huaisun.graduation.user.mapper.UserMapper;
 import com.huaisun.graduation.user.service.UserService;
 import com.huaisun.graduation.user.util.ToUserForm;
 import com.huaisun.graduation.util.Result;
@@ -29,7 +31,10 @@ import java.util.List;
 public class UserServiceImpl extends ToUserForm implements UserService {
 
     @Resource
-    private TUserMapper userMapper;
+    private TUserMapper tUserMapper;
+
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public Result<PageInfo<TUser>> searchUser(UserForm form) {
@@ -55,7 +60,7 @@ public class UserServiceImpl extends ToUserForm implements UserService {
             example.or(criteria3);
         }
 
-        List<TUser> userList = userMapper.selectByExample(example);
+        List<TUser> userList = tUserMapper.selectByExample(example);
 
         PageInfo<TUser> pageInfo = new PageInfo<>(userList);
         result.setPage(pageInfo);
@@ -77,11 +82,11 @@ public class UserServiceImpl extends ToUserForm implements UserService {
             user.setIntegral(new BigDecimal(0));
             user.setBalance(new BigDecimal(0));
             user.setCost(new BigDecimal(0));
-            return userMapper.insert(user) > 0 ? Result.success() : Result.failure(ResultCode.USER_SAVE_ERROR);
+            return tUserMapper.insert(user) > 0 ? Result.success() : Result.failure(ResultCode.USER_SAVE_ERROR);
         }
         TUserKey key = new TUserKey();
         key.setId(form.getId());
-        TUser user = userMapper.selectByPrimaryKey(key);
+        TUser user = tUserMapper.selectByPrimaryKey(key);
         if (Tools.isEmpty(user)) {
             return Result.failure(ResultCode.PARAM_IS_BLANK);
         } else {
@@ -97,7 +102,7 @@ public class UserServiceImpl extends ToUserForm implements UserService {
             }
 
         }
-        return userMapper.updateByPrimaryKey(user) > 0 ? Result.success() : Result.failure(ResultCode.USER_UPDATE_ERROR);
+        return tUserMapper.updateByPrimaryKey(user) > 0 ? Result.success() : Result.failure(ResultCode.USER_UPDATE_ERROR);
     }
 
     @Override
@@ -108,6 +113,12 @@ public class UserServiceImpl extends ToUserForm implements UserService {
         }
         TUserKey userKey = new TUserKey();
         userKey.setId(form.getId());
-        return userMapper.deleteByPrimaryKey(userKey) > 0 ? Result.success() : Result.failure(ResultCode.USER_DELETE_ERROR);
+        return tUserMapper.deleteByPrimaryKey(userKey) > 0 ? Result.success() : Result.failure(ResultCode.USER_DELETE_ERROR);
+    }
+
+    @Override
+    public Result getUser() {
+        List<UserSelectEntity> entities = userMapper.querySelectUser();
+        return Result.success(entities);
     }
 }

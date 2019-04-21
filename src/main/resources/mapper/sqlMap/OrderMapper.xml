@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="role.mapper.OrderMapper">
-    <select id="searchOrderAndUser" parameterType="role.form.OrderForm"
-            resultType="role.entity.OrderEntity">
+<mapper namespace="com.huaisun.graduation.order.mapper.OrderMapper">
+    <select id="searchOrderAndUser" parameterType="com.huaisun.graduation.order.form.OrderForm"
+            resultType="com.huaisun.graduation.order.entity.OrderEntity">
         SELECT
         O.ID AS id,
         U.NAME AS name,

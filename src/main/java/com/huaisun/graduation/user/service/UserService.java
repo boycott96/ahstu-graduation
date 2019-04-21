@@ -33,4 +33,11 @@ public interface UserService {
      * @return Result
      */
     Result deleteUser(UserForm form);
+
+    /**
+     * 获取用户信息
+     *
+     * @return
+     */
+    Result getUser();
 }

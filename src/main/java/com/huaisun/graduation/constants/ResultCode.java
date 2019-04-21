@@ -63,7 +63,9 @@ public enum ResultCode {
     MILK_DELETE_ERROR(100001, "奶茶删除失败"),
 
     /* 文件上传错误：110001-119999*/
-    FILE_UPLOAD_ERROR(100001, "文件上传失败");
+    FILE_UPLOAD_ERROR(110001, "文件上传失败"),
+
+    CART_DELETE_ERROR(120001, "购物车为空");
 
     private Integer code;
 

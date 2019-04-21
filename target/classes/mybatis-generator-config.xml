@@ -43,25 +43,26 @@
         <!--<table tableName="t_employ" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-        <table tableName="t_order" modelType="hierarchical">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
+
         <table tableName="t_user" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-        <table tableName="t_detail_order" modelType="hierarchical">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
+
         <table tableName="t_specifications" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
 
         <table tableName="t_milk_menu" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>-->
+        </table>
         <table tableName="t_cart" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-
+        <table tableName="t_order" modelType="hierarchical">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>-->
+        <table tableName="t_detail_order" modelType="hierarchical">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
     </context>
 </generatorConfiguration>

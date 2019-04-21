@@ -1,7 +1,7 @@
-package role.mapper;
+package com.huaisun.graduation.order.mapper;
 
-import role.entity.OrderEntity;
-import role.form.OrderForm;
+import com.huaisun.graduation.order.entity.OrderEntity;
+import com.huaisun.graduation.order.form.OrderForm;
 
 import java.util.List;
 
