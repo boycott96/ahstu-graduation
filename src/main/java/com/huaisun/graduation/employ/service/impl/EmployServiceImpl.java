@@ -35,7 +35,11 @@ public class EmployServiceImpl extends ToEmployForm implements EmployService {
 
     @Override
     public Result login(EmployForm form) {
-        return null;
+        TEmployExample example = new TEmployExample();
+        TEmployExample.Criteria criteria = example.createCriteria();
+        criteria.andNameEqualTo(form.getName());
+        List<TEmploy> employs = tEmployMapper.selectByExample(example);
+        return employs.size() > 0 && employs.get(0).getPassword().equals(form.getPassword()) ? Result.success(employs.get(0)) : Result.failure(ResultCode.EMPLOY_LOGIN_ERROR);
     }
 
     @Override

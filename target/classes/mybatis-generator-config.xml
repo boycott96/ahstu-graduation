@@ -58,10 +58,11 @@
         <table tableName="t_cart" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
-        <table tableName="t_order" modelType="hierarchical">
+
+        <table tableName="t_detail_order" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>-->
-        <table tableName="t_detail_order" modelType="hierarchical">
+        <table tableName="t_order" modelType="hierarchical">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
     </context>
