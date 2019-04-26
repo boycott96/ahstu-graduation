@@ -27,7 +27,7 @@ public class UploadController {
         }
 
         String fileName = "img" + System.currentTimeMillis() + ".jpg";
-        String filePath = "D:/Web Projects/sun-vue-element/static/img/milk/";
+        String filePath = "/home/huaisun/apache-tomcat-9.0.19/webapps/ROOT/static/img/milk/";
         File dest = new File(filePath + fileName);
         try {
             img.transferTo(dest);
