@@ -17,7 +17,7 @@
         <!-- 数据库的相关配置 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://134.175.89.83:3306/db_wei_xiao?serverTimezone=UTC"
-                        userId="huaisun" password="Xy971002"/>
+                        userId="root" password="Sun961017"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
