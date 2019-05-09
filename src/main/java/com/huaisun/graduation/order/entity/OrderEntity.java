@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 /**
  * 返回订单实体
  *
@@ -19,4 +21,8 @@ public class OrderEntity extends TOrder {
 
     @ApiModelProperty(value = "员工姓名", dataType = "String")
     private String name;
+
+    @ApiModelProperty(value = "详情", dataType = "List")
+    private List<DetailOrder> details;
 }
+

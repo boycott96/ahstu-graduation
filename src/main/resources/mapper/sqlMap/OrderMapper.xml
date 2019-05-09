@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huaisun.graduation.order.mapper.OrderMapper">
+    <resultMap id="ListResultMap" type="com.huaisun.graduation.order.entity.OrderEntity">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="u_id" jdbcType="INTEGER" property="uId" />
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="valid" jdbcType="INTEGER" property="valid" />
+        <result column="cost" jdbcType="DECIMAL" property="cost" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <collection property="details" ofType="com.huaisun.graduation.order.entity.DetailOrder">
+            <!-- 定义这个集合中元素的封装规则 -->
+            <id column="m_id" jdbcType="INTEGER" property="mId"/>
+            <result column="milk_name" jdbcType="VARCHAR" property="milkName"/>
+            <result column="number" jdbcType="INTEGER" property="number"/>
+        </collection>
+    </resultMap>
     <select id="searchOrderAndUser" parameterType="com.huaisun.graduation.order.form.OrderForm"
-            resultType="com.huaisun.graduation.order.entity.OrderEntity">
+            resultMap="ListResultMap">
         SELECT
-        O.ID AS id,
-        U.ID AS uId,
-        U.NAME AS name,
-        O.CREATE_DATE AS createDate,
-        O.valid as valid,
-        O.COST AS cost
+        O.*,
+        U.NAME,
+        D.m_id,
+        D.number,
+        M.milk_name
         FROM t_order O
         LEFT JOIN t_user U ON O.U_ID = U.ID
+        LEFT JOIN t_detail_order D ON D.O_ID = O.ID
+        LEFT JOIN t_milk_menu M ON D.M_ID = M.ID
         <where>
             <if test="name != null and name!=''">
                 instr(U.name, #{name}) or instr(O.ID,#{name})
