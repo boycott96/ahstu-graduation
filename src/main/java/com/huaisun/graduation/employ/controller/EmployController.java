@@ -29,12 +29,8 @@ public class EmployController {
 
     @ApiOperation(value = "员工管理[员工登陆]")
     @PostMapping("/login")
-    public Result login(EmployForm form, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Result result = service.login(form);
-        session.setAttribute("employ", result.getData());
-        result.setData(null);
-        return result;
+    public Result login(EmployForm form) {
+        return service.login(form);
     }
 
     @ApiOperation(value = "员工管理[查询员工]")
