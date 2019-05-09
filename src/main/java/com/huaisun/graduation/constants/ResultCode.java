@@ -21,6 +21,7 @@ public enum ResultCode {
     USER_SAVE_ERROR(20003, "用户注册失败"),
     USER_UPDATE_ERROR(20004, "用户更新失败"),
     USER_DELETE_ERROR(20005, "用户删除失败"),
+    USER_BALANCE_ERROR(20006, "用户余额不足,请充值"),
 
     /* 员工错误：30001-39999*/
     EMPLOY_NOT_LOGGED_IN(30001, "员工未登录"),

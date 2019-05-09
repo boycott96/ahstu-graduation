@@ -23,7 +23,7 @@ public class OrderForm extends PageForm {
     private String id;
 
     @ApiModelProperty(value = "用户id", dataType = "Integer")
-    private Integer uId;
+    private Integer userId;
 
     @ApiModelProperty(value = "详情", dataType = "List")
     private List<OrderDetailForm> orderDetail;

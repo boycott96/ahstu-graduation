@@ -28,5 +28,6 @@ public class ToMilkMenuForm {
         if (Tools.isNotEmpty(form.getShelf())) {
             milkMenu.setShelf(form.getShelf());
         }
+        milkMenu.setMilkGrade(5);
     }
 }

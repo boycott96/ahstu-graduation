@@ -5,6 +5,7 @@
             resultType="com.huaisun.graduation.order.entity.OrderEntity">
         SELECT
         O.ID AS id,
+        U.ID AS uId,
         U.NAME AS name,
         O.CREATE_DATE AS createDate,
         O.valid as valid,
