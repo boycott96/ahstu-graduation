@@ -68,6 +68,7 @@ public class OrderServiceImpl implements OrderService {
             tDetailOrder.setoId(order.getId());
             tDetailOrder.setmId(orderDetail.getMid());
             tDetailOrder.setNumber(orderDetail.getNumber());
+            tDetailOrder.setType(orderDetail.getType());
             tDetailOrderMapper.insert(tDetailOrder);
         });
         tOrderMapper.insert(order);

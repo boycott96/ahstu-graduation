@@ -6,4 +6,5 @@ import lombok.Data;
 public class OrderDetailForm {
     private Integer mid;
     private Integer number;
+    private String type;
 }

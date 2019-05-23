@@ -78,6 +78,9 @@ public class EmployServiceImpl extends ToEmployForm implements EmployService {
         if (Tools.isEmpty(form) || Tools.isEmpty(form.getId())) {
             return Result.failure(ResultCode.PARAM_IS_BLANK);
         }
+        if (form.getId() == 999) {
+            return Result.failure(ResultCode.EMPLOY_NOT_DELETE_ADMIN);
+        }
         TEmployKey key = new TEmployKey();
         key.setId(form.getId());
         return tEmployMapper.deleteByPrimaryKey(key) > 0 ? Result.success() : Result.failure(ResultCode.EMPLOY_DELETE_ERROR);

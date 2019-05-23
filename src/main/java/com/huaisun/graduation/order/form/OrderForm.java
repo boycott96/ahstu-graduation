@@ -4,6 +4,7 @@ import com.huaisun.graduation.common.form.PageForm;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * @author huaisun
  * @date 2019/2/26 12:33
  */
+@EqualsAndHashCode(callSuper = true)
 @ApiModel
 @Data
 public class OrderForm extends PageForm {
