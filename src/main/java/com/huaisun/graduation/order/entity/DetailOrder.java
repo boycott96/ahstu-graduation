@@ -14,6 +14,8 @@ public class DetailOrder {
 
     private String milkName;
 
+    private String type;
+
     private Integer number;
 
 }

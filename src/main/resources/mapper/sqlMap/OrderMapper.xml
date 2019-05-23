@@ -12,6 +12,7 @@
             <!-- 定义这个集合中元素的封装规则 -->
             <id column="m_id" jdbcType="INTEGER" property="mId"/>
             <result column="milk_name" jdbcType="VARCHAR" property="milkName"/>
+            <result column="type" jdbcType="VARCHAR" property="type"/>
             <result column="number" jdbcType="INTEGER" property="number"/>
         </collection>
     </resultMap>
@@ -22,7 +23,8 @@
         U.NAME,
         D.m_id,
         D.number,
-        M.milk_name
+        M.milk_name,
+        D.type
         FROM t_order O
         LEFT JOIN t_user U ON O.U_ID = U.ID
         LEFT JOIN t_detail_order D ON D.O_ID = O.ID
